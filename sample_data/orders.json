@@ -1,0 +1,65 @@
+{
+    "-MTpcli73mfiIqW0lpPe": {
+        "firebaseKey": "-MTpcli73mfiIqW0lpPe",
+        "customer_name": "Joe Gibbs",
+        "order_closed": false,
+        "customer_email": "joe@email.com",
+        "customer_phone": 5555551284,
+        "order_type": "phone",
+        "order_total": 25
+    },
+    "-MTpcli9kmjpvbdr-ckb": {
+        "firebaseKey": "-MTpcli9kmjpvbdr-ckb",
+        "customer_name": "Elle Lawrence",
+        "order_closed": true,
+        "cutomer_email": "elle@email.com",
+        "customer_phone": 5555551238,
+        "order_type": "in-person",
+        "order_total": 10
+    },
+    "-MTpcliA_-GtWZHpb8sf": {
+        "firebaseKey": "-MTpcliA_-GtWZHpb8sf",
+        "customer_name": "Austin Parker",
+        "order_closed": true,
+        "cutomer_email": "austin@email.com",
+        "customer_phone": 5555557234,
+        "order_type": "phone",
+        "initial_total": 15
+    },
+    "-MTpcliCeUeUNMpZ-Kog": {
+        "firebaseKey": "-MTpcliCeUeUNMpZ-Kog",
+        "customer_name": "Derek Malone",
+        "order_closed": false,
+        "cutomer_email": "derek@email.com",
+        "customer_phone": 5555551734,
+        "order_type": "in-person",
+        "initial_total": 40
+    },
+    "-MTpcliDmrp15A1WIE4U": {
+        "firebaseKey": "-MTpcliDmrp15A1WIE4U",
+        "customer_name": "Dr T",
+        "order_closed": true,
+        "cutomer_email": "drt@email.com",
+        "customer_phone": 5555551274,
+        "order_type": "in-person",
+        "initial_total": 30
+    },
+    "-MTpcliGnhDSsyvILIoJ": {
+        "firebaseKey": "-MTpcliGnhDSsyvILIoJ",
+        "customer_name": "Aja",
+        "order_closed": true,
+        "cutomer_email": "aja@email.com",
+        "customer_phone": 5555551237,
+        "order_type": "phone",
+        "initial_total": 65
+    },
+    "-MTpclihMGDRrywIkjor": {
+        "firebaseKey": "-MTpclihMGDRrywIkjor",
+        "customer_name": "Trinity",
+        "order_closed": false,
+        "cutomer_email": "trinity@email.com",
+        "customer_phone": 5555558234,
+        "order_type": "phone",
+        "initial_total": 5
+    }
+  }
