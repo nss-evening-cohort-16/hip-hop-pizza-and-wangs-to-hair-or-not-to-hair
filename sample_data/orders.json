@@ -5,8 +5,11 @@
         "order_closed": false,
         "customer_email": "joe@email.com",
         "customer_phone": 5555551284,
-        "order_type": "phone",
-        "order_total": 25
+        "item_total": 25,
+        "date": "9/13/2021",
+        "payment_type": "Credit",
+        "tip_total": 5,
+        "type": "Phone"
     },
     "-MTpcli9kmjpvbdr-ckb": {
         "firebaseKey": "-MTpcli9kmjpvbdr-ckb",
@@ -14,8 +17,11 @@
         "order_closed": true,
         "cutomer_email": "elle@email.com",
         "customer_phone": 5555551238,
-        "order_type": "in-person",
-        "order_total": 10
+        "item_total": 10,
+        "date": "9/12/2021",
+        "payment_type": "Cash",
+        "tip_total": 3,
+        "type": "In-Person"
     },
     "-MTpcliA_-GtWZHpb8sf": {
         "firebaseKey": "-MTpcliA_-GtWZHpb8sf",
@@ -23,8 +29,11 @@
         "order_closed": true,
         "cutomer_email": "austin@email.com",
         "customer_phone": 5555557234,
-        "order_type": "phone",
-        "initial_total": 15
+        "item_total": 15,
+        "date": "9/11/2021",
+        "payment_type": "Check",
+        "tip_total": 4,
+        "type": "In-Person"
     },
     "-MTpcliCeUeUNMpZ-Kog": {
         "firebaseKey": "-MTpcliCeUeUNMpZ-Kog",
@@ -32,8 +41,11 @@
         "order_closed": false,
         "cutomer_email": "derek@email.com",
         "customer_phone": 5555551734,
-        "order_type": "in-person",
-        "initial_total": 40
+        "item_total": 40,
+        "date": "9/10/2021",
+        "payment_type": "Debit",
+        "tip_total": 10,
+        "type": "Phone"
     },
     "-MTpcliDmrp15A1WIE4U": {
         "firebaseKey": "-MTpcliDmrp15A1WIE4U",
@@ -41,8 +53,11 @@
         "order_closed": true,
         "cutomer_email": "drt@email.com",
         "customer_phone": 5555551274,
-        "order_type": "in-person",
-        "initial_total": 30
+        "item_total": 30,
+        "date": "9/13/2021",
+        "payment_type": "Credit",
+        "tip_total": 15,
+        "type": "Phone"
     },
     "-MTpcliGnhDSsyvILIoJ": {
         "firebaseKey": "-MTpcliGnhDSsyvILIoJ",
@@ -50,8 +65,11 @@
         "order_closed": true,
         "cutomer_email": "aja@email.com",
         "customer_phone": 5555551237,
-        "order_type": "phone",
-        "initial_total": 65
+        "item_total": 65,
+        "date": "9/12/2021",
+        "payment_type": "Mobile",
+        "tip_total": 30,
+        "type": "In-Person"
     },
     "-MTpclihMGDRrywIkjor": {
         "firebaseKey": "-MTpclihMGDRrywIkjor",
@@ -59,7 +77,10 @@
         "order_closed": false,
         "cutomer_email": "trinity@email.com",
         "customer_phone": 5555558234,
-        "order_type": "phone",
-        "initial_total": 5
+        "item_total": 5,
+        "date": "9/11/2021",
+        "payment_type": "Debit",
+        "tip_total": 1,
+        "type": "In-Person"
     }
   }
