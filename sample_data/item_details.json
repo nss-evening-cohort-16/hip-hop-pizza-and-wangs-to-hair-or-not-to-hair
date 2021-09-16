@@ -1,0 +1,42 @@
+{
+    "-MTpcli8eeG9K84b9yMK": {
+        "firebaseKey": "-MTpcli8eeG9K84b9yMK",
+        "item_name": "Cheese Pizza",
+        "item_price": "10"
+    },
+    "-MTpcli5saD1C2ne1tIB": {
+        "firebaseKey": "-MTpcli5saD1C2ne1tIB",
+        "item_name": "Pepperoni Pizza",
+        "item_price": "12"
+    },
+    "-MTpcli5kvL2G0nq5nTV": {
+        "firebaseKey": "-MTpcli5kvL2G0nq5nTV",
+        "item_name": "Veggie Pizza",
+        "item_price": "10"
+    },
+    "-MTpcli4qaL7JPb34bZZ": {
+        "firebaseKey": "-MTpcli4qaL7JPb34bZZ",
+        "item_name": "Buffalo Wings",
+        "item_price": "12"
+    },
+    "-MTpcli2skK2YDs06cPM": {
+        "firebaseKey": "-MTpcli2skK2YDs06cPM",
+        "item_name": "BBQ Wings",
+        "item_price": "12"
+    },
+    "-MTpcli6fuW6ADon7bFZ": {
+        "firebaseKey": "-MTpcli6fuW6ADon7bFZ",
+        "item_name": "Thai Chili Wings",
+        "item_price": "12"
+    },
+    "-MTpcli1wpE2N0sa7jUP": {
+        "firebaseKey": "-MTpcli1wpE2N0sa7jUP",
+        "item_name": "Chef Salad",
+        "item_price": "15"
+    },
+    "-MTpcli2btP05Zyo3iFC": {
+        "firebaseKey": "-MTpcli2btP05Zyo3iFC",
+        "item_name": "Donuts",
+        "item_price": "5"
+    }
+}
