@@ -6,8 +6,8 @@ const showItems = (array) => {
         <h5 class="card-item-name">${obj.item_name}</h5>
         <h4 class="card-item-price">${obj.item_price}</h4>
         <hr>
-        <i class="fas fa-edit btn btn-info" id="update-item-btn"></i>
-        <i class="btn btn-danger fas fa-trash-alt" id="delete-item-btn"></i>
+        <i class="fas fa-edit btn btn-info" id="update-item-btn--${obj.firebaseKey}"></i>
+        <i class="btn btn-danger fas fa-trash-alt" id="delete-item-btn--${obj.firebaseKey}"></i>
         </div>
     </div>
   `;
