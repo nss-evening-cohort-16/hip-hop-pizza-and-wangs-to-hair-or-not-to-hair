@@ -2,6 +2,7 @@
 // import checkLoginStatus from './helpers/auth';
 import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
+import showOrders from './components/viewAllOrders';
 
 const init = () => {
   document.querySelector('#app').innerHTML = `
@@ -17,6 +18,8 @@ const init = () => {
   document
     .querySelector('#click-me')
     .addEventListener('click', () => console.warn('You clicked that button!'));
+
+  showOrders();
 
   // USE WITH FIREBASE AUTH
   // checkLoginStatus();
