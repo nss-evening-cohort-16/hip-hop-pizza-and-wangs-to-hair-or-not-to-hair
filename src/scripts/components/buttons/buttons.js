@@ -7,8 +7,8 @@ const mainMenuButtons = () => {
 
 // ITEM DETAILS PAGE BUTTONS
 const itemDetailsButtons = () => {
-  document.querySelector('#store').innerHTML += '<button id="add-item-button" class="btn btn-success">Add Item</button>';
-  document.querySelector('#store').innerHTML += '<button id="go-to-payment-button" class="btn btn-info">Go To Payment</button>';
+  document.querySelector('#add-button').innerHTML += '<button id="add-item-button" class="btn btn-success">Add Item</button>';
+  document.querySelector('#add-button').innerHTML += '<button id="go-to-payment-button" class="btn btn-info">Go To Payment</button>';
 };
 
 export { mainMenuButtons, itemDetailsButtons };
