@@ -1,17 +1,17 @@
 // BASIC MENU BUTTONS
 const viewOrdersButton = () => {
   const domString = '<button id="view-orders-button" class="btn btn-success">View Orders</button>';
-  document.querySelector('#store').innerHTML = domString;
+  document.querySelector('#main-buttons').innerHTML = domString;
 };
 
 const createOrderButton = () => {
   const domString = '<button id="create-order-button" class="btn btn-info">Create an Order</button>';
-  document.querySelector('#store').innerHTML = domString;
+  document.querySelector('#main-buttons').innerHTML = domString;
 };
 
 const viewRevenueButton = () => {
   const domString = '<button id="view-revenue-button" class="btn btn-danger">View Revenue</button>';
-  document.querySelector('#store').innerHTML = domString;
+  document.querySelector('#main-buttons').innerHTML = domString;
 };
 
 // // ITEM DETAILS PAGE
