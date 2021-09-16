@@ -1,4 +1,8 @@
+import clearDom from '../views/clearDom';
+
 const showItems = (array) => {
+  clearDom();
+
   array.forEach((obj) => {
     document.querySelector('#store').innerHTML += `
     <div class="card" style="width: 18rem;">
