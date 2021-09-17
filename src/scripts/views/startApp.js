@@ -1,13 +1,14 @@
-import mainMenuButtons from '../components/buttons/buttons';
+import mainMenuBuilder from '../components/mainMenu';
 import logoutButton from '../components/buttons/logoutButton';
 import domBuilder from '../components/domBuilder';
 import navBar from '../components/navBar';
 
-const startApp = () => {
+const startApp = (user) => {
   domBuilder();
   navBar();
   logoutButton();
-  mainMenuButtons();
+  mainMenuBuilder(user);
+  console.warn(user);
 };
 
 export default startApp;
