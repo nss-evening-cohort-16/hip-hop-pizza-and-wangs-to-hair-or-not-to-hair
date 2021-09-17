@@ -1,4 +1,8 @@
+import clearDom from '../../views/clearDom';
+
 const addItemForm = () => {
+  clearDom();
+
   document.querySelector('#form-container').innerHTML = `
       <form id="add-item-form" class="mb-4">
         <div class="form-group">

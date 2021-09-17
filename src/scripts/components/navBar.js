@@ -2,7 +2,7 @@ const navBar = () => {
   document.querySelector('#navigation').innerHTML = `
     <nav class="navbar navbar-expand-lg navbar navbar-dark" style="background-color: #464442;">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" id="navbar-home" href="#">
     <img src="../../instructions/hhpw-record.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
     Hip Hop Pizza & Wangs
   </a>
