@@ -1,4 +1,8 @@
+import clearDom from '../../views/clearDom';
+
 const closeOrderForm = () => {
+  clearDom();
+
   document.querySelector('#form-container').innerHTML = `
       <form id="close-order-form" class="mb-4">
         <div class="form-group">
