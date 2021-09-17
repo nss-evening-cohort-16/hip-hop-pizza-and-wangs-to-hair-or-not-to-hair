@@ -1,5 +1,7 @@
+import getOrders from '../../helpers/data/ordersData';
 import addOrderForm from '../forms/addOrderForm';
 import mainMenuBuilder from '../mainMenu';
+import showOrders from '../viewAllOrders';
 
 const navigationEvents = (user) => {
   // RETURN TO MAIN MENU (CLICKING ON RESTAURANT NAME)
@@ -8,6 +10,9 @@ const navigationEvents = (user) => {
       mainMenuBuilder(user);
     }
     // VIEW ORDERS BUTTON
+    if (e.target.id.includes('view-orders')) {
+      getOrders().then(showOrders);
+    }
 
     // CREATE ORDERS BUTTON
     if (e.target.id.includes('create-new')) {

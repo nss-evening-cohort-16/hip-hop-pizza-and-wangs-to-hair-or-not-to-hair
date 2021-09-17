@@ -1,6 +1,8 @@
 import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
+import getOrders from '../../helpers/data/ordersData';
+import showOrders from '../viewAllOrders';
 
 const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -12,7 +14,7 @@ const buttonEvents = () => {
     }
 
     if (e.target.id.includes('view-orders-button')) {
-      console.warn('view orders clicked');
+      getOrders().then(showOrders);
     }
 
     if (e.target.id.includes('create-order-button')) {
