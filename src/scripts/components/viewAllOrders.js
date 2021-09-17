@@ -1,4 +1,8 @@
+import clearDom from '../views/clearDom';
+
 const showOrders = (array) => {
+  clearDom();
+
   document.querySelector('#store').innerHTML = '';
   array.forEach((order) => {
     document.querySelector('#store').innerHTML += `<div class="card">

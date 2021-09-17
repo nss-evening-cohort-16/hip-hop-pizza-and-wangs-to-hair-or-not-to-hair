@@ -8,6 +8,7 @@ import domEvents from '../components/events/domEvents';
 
 const startApp = (user) => {
   domBuilder();
+  domEvents();
   navBar();
   logoutButton();
   domEvents();
