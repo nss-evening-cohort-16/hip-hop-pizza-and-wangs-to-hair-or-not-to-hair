@@ -1,10 +1,13 @@
-const revenue = () => {
+const revenue = (order) => {
   document.querySelector('#store').innerHTML = `
     <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <h3 class="card-title">REVENUE</h3>
+    <h3 class="card-title">TOTAL REVENUE: ${order.item_total} </h3>
+    <p class="card-text">DATE RANGE: </p>
+    <p class="card-text">TOTAL TIPS: ${order.tip_total}</p>
+    <p class="card-text">TOTAL CALL IN ORDERS ${order.type}</p>
+    <p class="card-text"></p>
   </div>
 </div>`;
 };
