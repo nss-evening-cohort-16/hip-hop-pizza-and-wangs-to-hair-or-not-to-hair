@@ -1,6 +1,16 @@
-// Button Events
+import addItemForm from '../forms/addItemForm';
+import closeOrderForm from '../forms/closeOrderForm';
 
-// Form Events
+const buttonEvents = () => {
+  document.querySelector('#main-container').addEventListener('click', (e) => {
+    if (e.target.id.includes('add-item-btn')) {
+      addItemForm();
+    }
+    if (e.target.id.includes('go-to-payment-btn')) {
+      closeOrderForm();
+    }
+  });
+};
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -23,10 +33,17 @@ const formEvents = () => {
         item_price: document.querySelector('#itemPrice').value
       };
       console.warn(itemObj);
-    };
+    }
   });
 };
 
-// Dom Events
+const domEvents = () => {
+  buttonEvents();
+  // Button Events
 
-export default formEvents;
+  // Form Events
+  formEvents();
+  // Dom Events
+};
+
+export default domEvents;
