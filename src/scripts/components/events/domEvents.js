@@ -1,5 +1,24 @@
-// Button Events
+// import showOrders from '../viewAllOrders';
+import addOrderForm from '../forms/addOrderForm';
 
-// Form Events
+const domEvents = () => {
+  document.querySelector('#main-container').addEventListener('click', (e) => {
+    // Button Events
+    if (e.target.id.includes('view-orders-button')) {
+      console.warn('view orders clicked');
+    }
 
-// Dom Events
+    if (e.target.id.includes('create-order-button')) {
+      addOrderForm();
+    }
+
+    if (e.target.id.includes('view-revenue-button')) {
+      console.warn('revenue clicked');
+    }
+    // Form Events
+
+    // Dom Events
+  });
+};
+
+export default domEvents;

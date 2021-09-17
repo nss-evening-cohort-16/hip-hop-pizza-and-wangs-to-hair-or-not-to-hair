@@ -1,4 +1,8 @@
+import clearDom from '../../views/clearDom';
+
 const addOrderForm = (obj = {}) => {
+  clearDom();
+
   document.querySelector('#form-container').innerHTML = `<form id="submit-vocab-form" class="mb-4 submit-vocab-form">
     <div class="form-group">
       <label for="customer-name">Name</label>
