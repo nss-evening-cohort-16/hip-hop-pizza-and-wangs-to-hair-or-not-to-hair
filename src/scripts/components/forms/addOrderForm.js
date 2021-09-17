@@ -16,6 +16,16 @@ const addOrderForm = (obj = {}) => {
     <label for="customer-email">Email Address</label>
     <input type="email" class="form-control" id="customer-email" placeholder="Enter Customer's Email Address" value="${obj.customer_email || ''}" required>
     </div>
+    <div>
+    <input type="radio" id="in-person" name="type" value="in-person"
+         checked>
+    <label for="in-person">In-Person</label>
+    </div>
+
+    <div>
+    <input type="radio" id="phone" name="type" value="phone">
+    <label for="phone">Phone</label>
+    </div>
     <button type="submit" 
     id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}"
     class="btn btn-success">Submit Entry</button>
