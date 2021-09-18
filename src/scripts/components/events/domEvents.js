@@ -36,7 +36,11 @@ const formEvents = () => {
         customer_name: document.querySelector('#customer-name').value,
         customer_phone: document.querySelector('#customer-phone').value,
         customer_email: document.querySelector('#customer-email').value,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        item_total: '',
+        payment_type: '',
+        tip_total: '',
+        order_type: document.querySelector('input[name="order-type"]:checked').value
       };
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }

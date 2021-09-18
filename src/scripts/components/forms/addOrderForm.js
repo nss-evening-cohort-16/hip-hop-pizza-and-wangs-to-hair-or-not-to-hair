@@ -17,13 +17,12 @@ const addOrderForm = (obj = {}) => {
     <input type="email" class="form-control" id="customer-email" placeholder="Enter Customer's Email Address" value="${obj.customer_email || ''}" required>
     </div>
     <div>
-    <input type="radio" id="in-person" name="type" value="in-person"
+    <input type="radio" id="in-person" name="order-type" value="In-Person"
          checked>
     <label for="in-person">In-Person</label>
     </div>
-
     <div>
-    <input type="radio" id="phone" name="type" value="phone">
+    <input type="radio" id="phone" name="order-type" value="Phone">
     <label for="phone">Phone</label>
     </div>
     <button type="submit" 
