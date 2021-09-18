@@ -12,4 +12,11 @@ const getOrders = () => new Promise((resolve, reject) => {
   console.warn(getOrders);
 });
 
-export default getOrders;
+// GET SINGLE ORDER
+const getSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/orders/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+export { getOrders, getSingleOrder };
