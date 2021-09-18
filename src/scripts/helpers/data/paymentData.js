@@ -26,7 +26,7 @@ const revenueCalculations = (array) => {
     tip_total: calcTipTotal(array)
   };
   return revenueData;
-  // NEED TO CREATE NEW OBJECT TO PUSH INFO INTO SO IT CAN BE PASSED TO REVENUE PAGE
+  // NEED TO CONTINUE FUNCTIONS TO UPDATE AND TO CREATE KEYS TO PUSH INFO INTO SO IT CAN BE PASSED TO REVENUE PAGE
 };
 
 export {
