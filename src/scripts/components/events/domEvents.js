@@ -3,7 +3,9 @@ import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
 import { createOrders, getOrders, getSingleOrder } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
-import { getItems, createItem } from '../../helpers/data/itemsData';
+import {
+  getItems, createItem, getSingleItem, updateItem
+} from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 
 const buttonEvents = () => {
@@ -11,7 +13,11 @@ const buttonEvents = () => {
     if (e.target.id.includes('add-item-btn')) {
       addItemForm();
     }
+    if (e.target.id.includes('edit-item-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
 
+      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
+    }
     if (e.target.id.includes('details-order-btn')) {
       getItems().then(showItems);
     }
@@ -65,7 +71,16 @@ const formEvents = () => {
         item_name: document.querySelector('#itemName').value,
         item_price: document.querySelector('#itemPrice').value
       };
-      createItem(itemObj).then((termArray) => showItems(termArray));
+      createItem(itemObj).then((itemArray) => showItems(itemArray));
+    }
+    // UPDATE ITEM
+    if (e.target.id.includes('update-item')) {
+      e.preventDefault();
+      const itemObj = {
+        item_name: document.querySelector('#itemName').value,
+        item_price: document.querySelector('#itemPrice').value
+      };
+      updateItem(itemObj).then((itemArray) => showItems(itemArray));
     }
   });
 };
