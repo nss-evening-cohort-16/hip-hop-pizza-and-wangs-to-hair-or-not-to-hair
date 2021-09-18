@@ -9,7 +9,7 @@
         "date": "9/13/2021",
         "payment_type": "Credit",
         "tip_total": 5,
-        "type": "Phone"
+        "order_type": "Phone"
     },
     "-MTpcli9kmjpvbdr-ckb": {
         "firebaseKey": "-MTpcli9kmjpvbdr-ckb",
@@ -21,7 +21,7 @@
         "date": "9/12/2021",
         "payment_type": "Cash",
         "tip_total": 3,
-        "type": "In-Person"
+        "order_type": "In-Person"
     },
     "-MTpcliA_-GtWZHpb8sf": {
         "firebaseKey": "-MTpcliA_-GtWZHpb8sf",
@@ -33,7 +33,7 @@
         "date": "9/11/2021",
         "payment_type": "Check",
         "tip_total": 4,
-        "type": "In-Person"
+        "order_type": "In-Person"
     },
     "-MTpcliCeUeUNMpZ-Kog": {
         "firebaseKey": "-MTpcliCeUeUNMpZ-Kog",
@@ -45,7 +45,7 @@
         "date": "9/10/2021",
         "payment_type": "Debit",
         "tip_total": 10,
-        "type": "Phone"
+        "order_type": "Phone"
     },
     "-MTpcliDmrp15A1WIE4U": {
         "firebaseKey": "-MTpcliDmrp15A1WIE4U",
@@ -57,7 +57,7 @@
         "date": "9/13/2021",
         "payment_type": "Credit",
         "tip_total": 15,
-        "type": "Phone"
+        "order_type": "Phone"
     },
     "-MTpcliGnhDSsyvILIoJ": {
         "firebaseKey": "-MTpcliGnhDSsyvILIoJ",
@@ -69,7 +69,7 @@
         "date": "9/12/2021",
         "payment_type": "Mobile",
         "tip_total": 30,
-        "type": "In-Person"
+        "order_type": "In-Person"
     },
     "-MTpclihMGDRrywIkjor": {
         "firebaseKey": "-MTpclihMGDRrywIkjor",
@@ -81,6 +81,6 @@
         "date": "9/11/2021",
         "payment_type": "Debit",
         "tip_total": 1,
-        "type": "In-Person"
+        "order_type": "In-Person"
     }
   }
