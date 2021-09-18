@@ -3,7 +3,7 @@ import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
 import { createOrders, getOrders, getSingleOrder } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
-import getItems from '../../helpers/data/itemsData';
+import { getItems, createItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 import { calcTipTotal, getClosedOrders } from '../../helpers/data/paymentData';
 // import revenue from '../revenueView';
@@ -70,7 +70,7 @@ const formEvents = () => {
         item_name: document.querySelector('#itemName').value,
         item_price: document.querySelector('#itemPrice').value
       };
-      console.warn(itemObj);
+      createItem(itemObj).then((termArray) => showItems(termArray));
     }
   });
 };
