@@ -1,16 +1,29 @@
 import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
-import { createOrders, getOrders } from '../../helpers/data/ordersData';
+import { createOrders, getOrders, getSingleOrder } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
+import getItems from '../../helpers/data/itemsData';
+import showItems from '../viewOrderDetails';
 
 const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     if (e.target.id.includes('add-item-btn')) {
       addItemForm();
     }
+
+    if (e.target.id.includes('details-order-btn')) {
+      getItems().then(showItems);
+    }
+
     if (e.target.id.includes('go-to-payment-btn')) {
       closeOrderForm();
+    }
+
+    if (e.target.id.includes('edit-order-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleOrder(firebaseKey).then((orderObj) => addOrderForm(orderObj));
     }
 
     if (e.target.id.includes('view-orders-button')) {

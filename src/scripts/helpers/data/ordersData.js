@@ -24,4 +24,11 @@ const createOrders = (orderObj) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export { getOrders, createOrders };
+// GET SINGLE ORDER
+const getSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/orders/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+export { getOrders, getSingleOrder, createOrders };
