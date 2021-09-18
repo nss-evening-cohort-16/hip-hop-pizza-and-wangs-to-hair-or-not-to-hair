@@ -37,9 +37,9 @@ const formEvents = () => {
         customer_phone: document.querySelector('#customer-phone').value,
         customer_email: document.querySelector('#customer-email').value,
         timestamp: Date.now(),
-        item_total: '',
+        item_total: 0,
         payment_type: '',
-        tip_total: '',
+        tip_total: 0,
         order_type: document.querySelector('input[name="order-type"]:checked').value,
         order_closed: false
       };
