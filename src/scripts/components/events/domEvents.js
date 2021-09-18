@@ -5,7 +5,7 @@ import { createOrders, getOrders, getSingleOrder } from '../../helpers/data/orde
 import showOrders from '../viewAllOrders';
 import { getItems, createItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
-import { calcTipTotal, getClosedOrders } from '../../helpers/data/paymentData';
+import { getClosedOrders, calcTotalRevenue } from '../../helpers/data/paymentData';
 // import revenue from '../revenueView';
 
 const buttonEvents = () => {
@@ -38,7 +38,7 @@ const buttonEvents = () => {
 
     // BUTTON EVENT THAT CALLS CLOSED ORDERS FOR REVENUE
     if (e.target.id.includes('view-revenue-button')) {
-      getClosedOrders().then((tips) => console.warn(calcTipTotal(tips)));
+      getClosedOrders().then((tips) => console.warn(calcTotalRevenue(tips)));
       // calcTipTotal(getClosedOrders()).then(console.warn);
       // console.warn(getClosedOrders());
     }

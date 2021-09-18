@@ -9,6 +9,8 @@ const getClosedOrders = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const calcTotalRevenue = (array) => (array.reduce((a, b) => (a + b.item_total), 0));
+
 const calcTipTotal = (array) => (array.reduce((a, b) => (a + b.tip_total), 0));
 // REDUCE FUNCTION ABOVE DOES WHAT CODE BELOW DOES
 //   let tipTotal = 0;
@@ -18,4 +20,11 @@ const calcTipTotal = (array) => (array.reduce((a, b) => (a + b.tip_total), 0));
 //   });
 //   return tipTotal;
 
-export { getClosedOrders, calcTipTotal };
+const revenueCalculations = (array) => {
+  calcTipTotal(array);
+  calcTotalRevenue(array);
+};
+
+export {
+  getClosedOrders, calcTipTotal, calcTotalRevenue, revenueCalculations
+};
