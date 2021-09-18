@@ -61,15 +61,6 @@ const formEvents = () => {
       };
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
-    // CREATE ITEM
-    if (e.target.id.includes('submit-item-button')) {
-      e.preventDefault();
-      const itemObj = {
-        item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value
-      };
-      console.warn(itemObj);
-    }
   });
 };
 
