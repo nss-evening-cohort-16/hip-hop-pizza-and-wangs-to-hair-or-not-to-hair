@@ -40,7 +40,8 @@ const formEvents = () => {
         item_total: '',
         payment_type: '',
         tip_total: '',
-        order_type: document.querySelector('input[name="order-type"]:checked').value
+        order_type: document.querySelector('input[name="order-type"]:checked').value,
+        order_closed: false
       };
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
