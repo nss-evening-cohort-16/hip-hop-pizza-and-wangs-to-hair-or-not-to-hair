@@ -6,6 +6,7 @@ import showOrders from '../viewAllOrders';
 import getItems from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 
+// BUTTON EVENTS
 const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     if (e.target.id.includes('add-item-btn')) {
@@ -40,6 +41,8 @@ const buttonEvents = () => {
   });
 };
 
+// FORM EVENTS
+
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     // CREATE ORDER
@@ -67,11 +70,7 @@ const formEvents = () => {
 
 const domEvents = () => {
   buttonEvents();
-  // Button Events
-
-  // Form Events
   formEvents();
-  // Dom Events
 };
 
 export default domEvents;
