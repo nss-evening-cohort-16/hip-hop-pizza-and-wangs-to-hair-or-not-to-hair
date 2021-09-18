@@ -1,7 +1,7 @@
 import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
-import getOrders from '../../helpers/data/ordersData';
+import { getOrders } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 import getItems from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
