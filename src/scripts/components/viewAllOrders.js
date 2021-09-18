@@ -15,7 +15,7 @@ const showOrders = (array) => {
         <hr>
         <p class="card-text">Email: ${order.customer_email}</p>
         <hr>
-        <p class="card-text">Order Type: ${order.type}</p>
+        <p class="card-text">Order Type: ${order.order_type}</p>
         <hr>
         <button class="btn btn-outline-secondary" id="details-order-btn--${order.firebaseKey}">Details</button>
         <button class="btn btn-info" id="edit-order-btn--${order.firebaseKey}">Edit</button>
