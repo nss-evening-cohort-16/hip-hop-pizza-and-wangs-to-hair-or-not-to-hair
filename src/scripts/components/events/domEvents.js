@@ -1,42 +1,57 @@
 import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
-import { createOrders, getOrders, getSingleOrder } from '../../helpers/data/ordersData';
+import {
+  createOrders,
+  deleteOrder,
+  getOrders,
+  getSingleOrder
+} from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 import { getItems, createItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 import { getClosedOrders, calcTotalRevenue } from '../../helpers/data/paymentData';
 // import revenue from '../revenueView';
 
+// BUTTON EVENTS
 const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
+    // LAUNCHES THE ADD NEW ITEM FORM
     if (e.target.id.includes('add-item-btn')) {
       addItemForm();
     }
-
+    // LAUNCHES THE ITEMS(ORDER DETAILS) PAGE
     if (e.target.id.includes('details-order-btn')) {
       getItems().then(showItems);
     }
-
+    // LAUNCHES THE CLOSE ORDER FORM
     if (e.target.id.includes('go-to-payment-btn')) {
       closeOrderForm();
     }
-
+    // LAUNCHES THE EDIT ORDER FORM
     if (e.target.id.includes('edit-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
 
       getSingleOrder(firebaseKey).then((orderObj) => addOrderForm(orderObj));
     }
+    // CLICK EVENT FOR DELETING AN ORDER
+    if (e.target.id.includes('delete-order-btn')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Are you sure you want to delete this order?')) {
+        const [, firebaseKey] = e.target.id.split('--');
 
+        deleteOrder(firebaseKey).then(showOrders);
+      }
+    }
+    // CLICK EVENT FOR SHOWING ALL ORDERS
     if (e.target.id.includes('view-orders-button')) {
       getOrders().then(showOrders);
     }
-
+    // CLICK EVENT FOR LAUNCHING CREATE ORDER FORM
     if (e.target.id.includes('create-order-button')) {
       addOrderForm();
     }
-
-    // BUTTON EVENT THAT CALLS CLOSED ORDERS FOR REVENUE
+    // CLICK EVENT FOR SHOWING REVENUE PAGE
     if (e.target.id.includes('view-revenue-button')) {
       getClosedOrders().then((tips) => console.warn(calcTotalRevenue(tips)));
       // calcTipTotal(getClosedOrders()).then(console.warn);
@@ -44,6 +59,8 @@ const buttonEvents = () => {
     }
   });
 };
+
+// FORM EVENTS
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -77,11 +94,7 @@ const formEvents = () => {
 
 const domEvents = () => {
   buttonEvents();
-  // Button Events
-
-  // Form Events
   formEvents();
-  // Dom Events
 };
 
 export default domEvents;
