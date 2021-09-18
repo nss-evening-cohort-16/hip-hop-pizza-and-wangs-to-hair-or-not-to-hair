@@ -9,7 +9,6 @@ const getOrders = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/orders.json`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
-  console.warn(getOrders);
 });
 
 // CREATE ORDERS
@@ -19,7 +18,7 @@ const createOrders = (orderObj) => new Promise((resolve, reject) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/orders/${response.data.name}.json`, body)
         .then(() => {
-          getOrders(orderObj).then((orderArray) => resolve(orderArray));
+          getOrders().then((orderArray) => resolve(orderArray));
         });
     }).catch((error) => reject(error));
 });

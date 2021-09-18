@@ -79,4 +79,4 @@ const domEvents = () => {
   // Dom Events
 };
 
-export { domEvents, formEvents };
+export default domEvents;
