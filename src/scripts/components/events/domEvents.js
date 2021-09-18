@@ -1,7 +1,7 @@
 import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
-import getOrders from '../../helpers/data/ordersData';
+import { createOrders, getOrders } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 
 const buttonEvents = () => {
@@ -38,7 +38,7 @@ const formEvents = () => {
         customer_email: document.querySelector('#customer-email').value,
         timestamp: Date.now()
       };
-      console.warn(orderObj);
+      createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
@@ -61,4 +61,4 @@ const domEvents = () => {
   // Dom Events
 };
 
-export default domEvents;
+export { domEvents, formEvents };
