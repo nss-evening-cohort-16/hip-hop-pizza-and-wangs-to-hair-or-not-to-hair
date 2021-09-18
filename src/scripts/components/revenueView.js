@@ -1,4 +1,9 @@
+import clearDom from '../views/clearDom';
+
 const revenue = (array) => {
+  clearDom();
+
+  console.warn(array);
   document.querySelector('#store').innerHTML = `
     <div class="card">
   <div class="card-body">

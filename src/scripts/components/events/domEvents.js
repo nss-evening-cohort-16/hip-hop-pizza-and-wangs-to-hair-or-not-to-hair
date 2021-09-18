@@ -38,6 +38,7 @@ const buttonEvents = () => {
 
     // BUTTON EVENT THAT CALLS CLOSED ORDERS FOR REVENUE
     if (e.target.id.includes('view-revenue-button')) {
+      console.warn(getClosedOrders());
       getClosedOrders().then(revenue);
     }
   });
