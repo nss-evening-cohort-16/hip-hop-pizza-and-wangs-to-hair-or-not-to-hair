@@ -3,11 +3,16 @@ import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
 import getOrders from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
+import getItems from '../../helpers/data/itemsData';
+import showItems from '../viewOrderDetails';
 
 const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     if (e.target.id.includes('add-item-btn')) {
       addItemForm();
+    }
+    if (e.target.id.includes('details-order-btn')) {
+      getItems().then(showItems);
     }
     if (e.target.id.includes('go-to-payment-btn')) {
       closeOrderForm();
