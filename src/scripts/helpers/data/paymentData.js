@@ -21,8 +21,12 @@ const calcTipTotal = (array) => (array.reduce((a, b) => (a + b.tip_total), 0));
 //   return tipTotal;
 
 const revenueCalculations = (array) => {
-  calcTipTotal(array);
-  calcTotalRevenue(array);
+  const revenueData = {
+    item_total: calcTotalRevenue(array),
+    tip_total: calcTipTotal(array)
+  };
+  return revenueData;
+  // NEED TO CREATE NEW OBJECT TO PUSH INFO INTO SO IT CAN BE PASSED TO REVENUE PAGE
 };
 
 export {
