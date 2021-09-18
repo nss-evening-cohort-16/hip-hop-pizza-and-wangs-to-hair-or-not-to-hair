@@ -1,7 +1,7 @@
 import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
-import { getOrders, getSingleOrder } from '../../helpers/data/ordersData';
+import { createOrders, getOrders, getSingleOrder } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 import { getItems, createItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
@@ -49,9 +49,14 @@ const formEvents = () => {
         customer_name: document.querySelector('#customer-name').value,
         customer_phone: document.querySelector('#customer-phone').value,
         customer_email: document.querySelector('#customer-email').value,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        item_total: 0,
+        payment_type: '',
+        tip_total: 0,
+        order_type: document.querySelector('input[name="order-type"]:checked').value,
+        order_closed: false
       };
-      console.warn(orderObj);
+      createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
