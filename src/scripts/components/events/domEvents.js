@@ -5,8 +5,8 @@ import { getOrders, getSingleOrder } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 import getItems from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
-import getClosedOrders from '../../helpers/data/paymentData';
-import revenue from '../revenueView';
+import { calcTipTotal, getClosedOrders } from '../../helpers/data/paymentData';
+// import revenue from '../revenueView';
 
 const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -38,8 +38,9 @@ const buttonEvents = () => {
 
     // BUTTON EVENT THAT CALLS CLOSED ORDERS FOR REVENUE
     if (e.target.id.includes('view-revenue-button')) {
+      getClosedOrders().then(calcTipTotal);
+      // calcTipTotal(getClosedOrders()).then(console.warn);
       console.warn(getClosedOrders());
-      getClosedOrders().then(revenue);
     }
   });
 };

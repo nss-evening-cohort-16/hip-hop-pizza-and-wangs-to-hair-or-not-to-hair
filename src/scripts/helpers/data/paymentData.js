@@ -9,8 +9,15 @@ const getClosedOrders = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const calcTipTotal = () => {
-  console.warn(getClosedOrders);
+const calcTipTotal = (array) => {
+  let tipTotal;
+
+  array.forEach((item) => {
+    console.warn(item.tip_total);
+    tipTotal += item.tip_total;
+  });
+  console.warn(tipTotal);
+  return tipTotal;
 };
 
 export { getClosedOrders, calcTipTotal };
