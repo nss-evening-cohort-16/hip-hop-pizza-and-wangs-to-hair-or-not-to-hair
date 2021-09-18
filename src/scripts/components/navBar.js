@@ -1,9 +1,11 @@
+import logo from '../../assets/images/hhpw-record.png';
+
 const navBar = () => {
   document.querySelector('#navigation').innerHTML = `
     <nav class="navbar navbar-expand-lg navbar navbar-dark" style="background-color: #464442;">
     <div class="container-fluid">
     <a class="navbar-brand" id="navbar-home" href="#">
-    <img src="../../instructions/hhpw-record.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    <img src="${logo}" alt="pizza" width="50" height="50" class="d-inline-block align-text-top">
     Hip Hop Pizza & Wangs
   </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">

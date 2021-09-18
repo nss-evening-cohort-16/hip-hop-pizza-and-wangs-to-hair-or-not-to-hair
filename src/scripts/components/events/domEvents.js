@@ -8,7 +8,7 @@ import {
   getSingleOrder
 } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
-import getItems from '../../helpers/data/itemsData';
+import { getItems, createItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 
 // BUTTON EVENTS
@@ -75,6 +75,15 @@ const formEvents = () => {
         order_closed: false
       };
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
+    }
+    // CREATE ITEM
+    if (e.target.id.includes('submit-item-button')) {
+      e.preventDefault();
+      const itemObj = {
+        item_name: document.querySelector('#itemName').value,
+        item_price: document.querySelector('#itemPrice').value
+      };
+      createItem(itemObj).then((termArray) => showItems(termArray));
     }
   });
 };
