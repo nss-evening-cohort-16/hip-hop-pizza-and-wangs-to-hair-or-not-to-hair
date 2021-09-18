@@ -1,4 +1,4 @@
-import getOrders from '../../helpers/data/ordersData';
+import { getOrders } from '../../helpers/data/ordersData';
 import addOrderForm from '../forms/addOrderForm';
 import mainMenuBuilder from '../mainMenu';
 import showOrders from '../viewAllOrders';
