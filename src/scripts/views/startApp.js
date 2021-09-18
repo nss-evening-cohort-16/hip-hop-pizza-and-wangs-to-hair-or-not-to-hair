@@ -11,7 +11,6 @@ const startApp = (user) => {
   domEvents();
   navBar();
   logoutButton();
-  // domEvents();
   mainMenuBuilder(user);
   navigationEvents(user);
   revenue();
