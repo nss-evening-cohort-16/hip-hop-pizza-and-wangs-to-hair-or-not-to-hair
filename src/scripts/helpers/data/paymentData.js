@@ -9,4 +9,8 @@ const getClosedOrders = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getClosedOrders;
+const calcTipTotal = () => {
+  console.warn(getClosedOrders);
+};
+
+export { getClosedOrders, calcTipTotal };
