@@ -3,11 +3,15 @@ import firebaseConfig from '../../../api/apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
+// GET ITEMS
+
 const getItems = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/items.json`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
+
+// CREATE ITEMS
 
 const createItem = (itemObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/items.json`, itemObj)
@@ -20,4 +24,12 @@ const createItem = (itemObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-export { getItems, createItem };
+// GET SINGLE ITEM
+
+const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/orders/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+export { getItems, createItem, getSingleItem };
