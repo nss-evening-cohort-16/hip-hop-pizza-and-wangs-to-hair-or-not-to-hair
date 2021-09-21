@@ -9,7 +9,7 @@ import {
   updateOrder
 } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
-import { getItems, createItem } from '../../helpers/data/itemsData';
+import { getItems, createItem, deleteItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 
 // BUTTON EVENTS
@@ -42,7 +42,15 @@ const buttonEvents = () => {
         deleteOrder(firebaseKey).then(showOrders);
       }
     }
+    // CLICK EVENT FOR DELETING AN ITEM
+    if (e.target.id.includes('delete-item-btn')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Are you sure you want to delete this item?')) {
+        const [, firebaseKey] = e.target.id.split('--');
 
+        deleteItem(firebaseKey).then(showItems);
+      }
+    }
     // CLICK EVENT FOR EDITING AN ORDER
     if (e.target.id.includes('update-order')) {
       e.preventDefault();
