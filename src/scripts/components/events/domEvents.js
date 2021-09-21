@@ -5,10 +5,11 @@ import {
   createOrders,
   deleteOrder,
   getOrders,
-  getSingleOrder
+  getSingleOrder,
+  updateOrder
 } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
-import { getItems, createItem } from '../../helpers/data/itemsData';
+import { getItems, createItem, deleteItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
 import revenue from '../revenueView';
@@ -43,6 +44,30 @@ const buttonEvents = () => {
         deleteOrder(firebaseKey).then(showOrders);
       }
     }
+    // CLICK EVENT FOR DELETING AN ITEM
+    if (e.target.id.includes('delete-item-btn')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Are you sure you want to delete this item?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+
+        deleteItem(firebaseKey).then(showItems);
+      }
+    }
+    // CLICK EVENT FOR EDITING AN ORDER
+    if (e.target.id.includes('update-order')) {
+      e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
+      const orderObj = {
+        customer_name: document.querySelector('#customer-name').value,
+        customer_phone: document.querySelector('#customer-phone').value,
+        customer_email: document.querySelector('#customer-email').value,
+        order_type: document.querySelector('input[name="order-type"]:checked').value,
+        firebaseKey
+      };
+
+      updateOrder(orderObj).then(showOrders);
+    }
+
     // CLICK EVENT FOR SHOWING ALL ORDERS
     if (e.target.id.includes('view-orders-button')) {
       getOrders().then(showOrders);
@@ -83,6 +108,7 @@ const formEvents = () => {
       console.warn(dateOpened);
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
+
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
       e.preventDefault();
