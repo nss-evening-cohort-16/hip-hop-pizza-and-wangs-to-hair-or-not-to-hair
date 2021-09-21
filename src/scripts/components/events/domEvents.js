@@ -17,11 +17,14 @@ const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     // LAUNCHES THE ADD NEW ITEM FORM
     if (e.target.id.includes('add-item-btn')) {
-      addItemForm();
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn(firebaseKey);
+      addItemForm(firebaseKey);
     }
     // LAUNCHES THE ITEMS(ORDER DETAILS) PAGE
     if (e.target.id.includes('details-order-btn')) {
-      getItems().then(showItems);
+      const [, firebaseKey] = e.target.id.split('--');
+      getItems(firebaseKey).then((itemArray) => showItems(firebaseKey, itemArray));
     }
     // LAUNCHES THE CLOSE ORDER FORM
     if (e.target.id.includes('go-to-payment-btn')) {
@@ -105,11 +108,13 @@ const formEvents = () => {
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
       e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value
+        item_price: document.querySelector('#itemPrice').value,
+        order_Id: firebaseKey
       };
-      createItem(itemObj).then((termArray) => showItems(termArray));
+      createItem(itemObj).then((orderArray) => showItems(firebaseKey, orderArray));
     }
   });
 };
