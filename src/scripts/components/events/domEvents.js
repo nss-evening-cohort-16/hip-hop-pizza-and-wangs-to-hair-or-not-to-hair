@@ -21,7 +21,7 @@ const buttonEvents = () => {
       addItemForm();
     }
     // LAUNCHES THE ITEM FORM TO UPDATE
-    if (e.target.id.includes('edit-item-btn')) {
+    if (e.target.id.includes('update-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
 
       getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
@@ -85,7 +85,7 @@ const formEvents = () => {
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
     // CREATE ITEM
-    if (e.target.id.includes('submit-item-button')) {
+    if (e.target.id.includes('submit-item')) {
       e.preventDefault();
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
