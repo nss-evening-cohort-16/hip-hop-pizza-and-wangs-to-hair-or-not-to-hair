@@ -5,8 +5,8 @@ const dbUrl = firebaseConfig.databaseURL;
 
 // GET ITEMS
 
-const getItems = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/items.json`)
+const getItems = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/items.json?orderBy="order_Id"&equalTo="${firebaseKey}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
@@ -19,7 +19,7 @@ const createItem = (itemObj) => new Promise((resolve, reject) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/items/${response.data.name}.json`, body)
         .then(() => {
-          getItems().then((itemArray) => resolve(itemArray));
+          getItems(itemObj.order_Id).then((itemArray) => resolve(itemArray));
         });
     }).catch(reject);
 });
