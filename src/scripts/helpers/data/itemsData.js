@@ -32,4 +32,19 @@ const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getItems, createItem, getSingleItem };
+// DELETE ITEM
+
+const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/items/${firebaseKey}.json`)
+    .then(() => {
+      getItems().then(resolve);
+    })
+    .catch(reject);
+});
+
+export {
+  getItems,
+  createItem,
+  getSingleItem,
+  deleteItem
+};
