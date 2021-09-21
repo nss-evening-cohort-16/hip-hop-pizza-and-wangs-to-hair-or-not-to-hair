@@ -1,6 +1,6 @@
 import clearDom from '../../views/clearDom';
 
-const addItemForm = (obj = {}) => {
+const addItemForm = (orderId, obj = {}) => {
   clearDom();
 
   document.querySelector('#form-container').innerHTML = `
@@ -14,7 +14,7 @@ const addItemForm = (obj = {}) => {
           <input type="text" class="form-control" id="itemPrice" placeholder="Price" value="${obj.price || ''}" required>
         </div>
         <div class="form-button">
-            <button id="${obj.firebaseKey ? `update-item--${obj.firebaseKey}` : 'submit-item-button'} class="btn btn-success">Submit Item</button>
+            <button id="${obj.firebaseKey ? `update-item--${obj.firebaseKey}` : `submit-item-button--${orderId}`}" class="btn btn-success">Submit Item</button>
         </div>
       </form>`;
 };
