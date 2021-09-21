@@ -1,8 +1,8 @@
 import clearDom from '../views/clearDom';
 
-const showItems = (array) => {
+const showItems = (firebaseKey, array) => {
   clearDom();
-
+  console.warn(firebaseKey);
   array.forEach((obj) => {
     document.querySelector('#store').innerHTML += `
     <div class="card" style="width: 18rem;">
@@ -16,7 +16,7 @@ const showItems = (array) => {
     </div>
   `;
   });
-  document.querySelector('#add-button').innerHTML = '<button class="btn btn-success btn-lg mb-4" id="add-item-btn">Add Another Item</button>';
+  document.querySelector('#add-button').innerHTML = `<button class="btn btn-success btn-lg mb-4" id="add-item-btn--${firebaseKey}">Add Another Item</button>`;
   document.querySelector('#add-button').innerHTML += '<button class="btn btn-success btn-lg mb-4" id="go-to-payment-btn">Go To Payment</button>';
 };
 
