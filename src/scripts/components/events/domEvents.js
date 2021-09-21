@@ -5,7 +5,8 @@ import {
   createOrders,
   deleteOrder,
   getOrders,
-  getSingleOrder
+  getSingleOrder,
+  updateOrder
 } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 import { getItems, createItem } from '../../helpers/data/itemsData';
@@ -41,6 +42,22 @@ const buttonEvents = () => {
         deleteOrder(firebaseKey).then(showOrders);
       }
     }
+
+    // CLICK EVENT FOR EDITING AN ORDER
+    if (e.target.id.includes('update-order')) {
+      e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
+      const orderObj = {
+        customer_name: document.querySelector('#customer-name').value,
+        customer_phone: document.querySelector('#customer-phone').value,
+        customer_email: document.querySelector('#customer-email').value,
+        order_type: document.querySelector('input[name="order-type"]:checked').value,
+        firebaseKey
+      };
+
+      updateOrder(orderObj).then(showOrders);
+    }
+
     // CLICK EVENT FOR SHOWING ALL ORDERS
     if (e.target.id.includes('view-orders-button')) {
       getOrders().then(showOrders);
@@ -76,6 +93,7 @@ const formEvents = () => {
       };
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
+
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
       e.preventDefault();
