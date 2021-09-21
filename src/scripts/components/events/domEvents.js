@@ -65,19 +65,22 @@ const buttonEvents = () => {
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     // CREATE ORDER
+    const dateOpened = new Date();
+
     if (e.target.id.includes('submit-order')) {
       e.preventDefault();
       const orderObj = {
         customer_name: document.querySelector('#customer-name').value,
         customer_phone: document.querySelector('#customer-phone').value,
         customer_email: document.querySelector('#customer-email').value,
-        timestamp: Date.now(),
+        date_opened: dateOpened,
         item_total: 0,
         payment_type: '',
         tip_total: 0,
         order_type: document.querySelector('input[name="order-type"]:checked').value,
         order_closed: false
       };
+      console.warn(dateOpened);
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
     // CREATE ITEM

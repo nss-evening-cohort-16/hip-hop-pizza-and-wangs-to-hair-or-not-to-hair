@@ -13,7 +13,7 @@ const startApp = (user) => {
   logoutButton();
   mainMenuBuilder(user);
   navigationEvents(user);
-  revenue();
+  revenue(user);
   console.warn(user);
 };
 
