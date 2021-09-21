@@ -25,9 +25,15 @@ const calcTipTotal = (array) => (array.reduce((a, b) => (a + b.tip_total), 0));
 
 // FINDS THE EARLIEST ORDER DATE CLOSED ORDERS
 const firstDate = (array) => {
-  console.warn(array);
-  (array.sort((a, b) => (a.getTime() - b.getTime())));
+  const dates = array.map((x) => x.date_opened);
+  // dates.sort((a, b) => (a > b));
+  const date = dates.shift();
+  console.warn('Parsed?', date);
+  return date;
 };
+  // const sortedDates = dates.sort((a, b) => (Date.parse(a) > Date.parse(b)));
+  // console.warn(sortedDates);
+  // return sortedDates;
 
 // FINDS THE OLDEST ORDER DATE CLOSED ORDERS
 // const oldestDate = (array) => (array.reduce((prev, cur) => (Date.parse(prev) < Date.parse(cur) ? prev : cur)));
