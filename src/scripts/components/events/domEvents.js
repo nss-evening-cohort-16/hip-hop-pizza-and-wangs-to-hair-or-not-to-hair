@@ -25,7 +25,7 @@ const buttonEvents = () => {
     // LAUNCHES THE ITEM FORM TO UPDATE
     if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey, orderFireKey] = e.target.id.split('--');
-      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj, orderFireKey));
+      getSingleItem(firebaseKey).then((itemObj) => addItemForm(orderFireKey, itemObj));
     }
     // SHOWS ITEMS CARDS
     if (e.target.id.includes('details-order-btn')) {
@@ -113,26 +113,27 @@ const formEvents = () => {
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
       e.preventDefault();
-      const [, firebaseKey] = e.target.id.split('--');
+      const [, orderId] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
         item_price: document.querySelector('#itemPrice').value,
-        order_Id: firebaseKey
+        order_Id: orderId
       };
-      console.warn(itemObj.order_Id);
-      createItem(itemObj).then((orderArray) => showItems(firebaseKey, orderArray));
+      createItem(itemObj).then((orderArray) => showItems(orderId, orderArray));
     }
 
     // UPDATE ITEM
     if (e.target.id.includes('update-item')) {
       e.preventDefault();
-      const [, firebaseKey] = e.target.id.split('--');
+      const [, firebaseKey, orderId] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
         item_price: document.querySelector('#itemPrice').value,
-        order_Id: firebaseKey
+        order_Id: orderId,
+        firebaseKey
+
       };
-      updateItem(itemObj).then((itemArray) => showItems(itemArray));
+      updateItem(itemObj, orderId).then((itemArray) => showItems(orderId, itemArray));
     }
   });
 };

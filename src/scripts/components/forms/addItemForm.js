@@ -1,6 +1,6 @@
 import clearDom from '../../views/clearDom';
 
-const addItemForm = (obj = {}, orderId) => {
+const addItemForm = (orderId, obj = {}) => {
   clearDom();
 
   document.querySelector('#form-container').innerHTML = `
