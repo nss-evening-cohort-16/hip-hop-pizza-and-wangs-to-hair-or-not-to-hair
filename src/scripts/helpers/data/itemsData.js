@@ -34,10 +34,10 @@ const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
 
 // DELETE ITEM
 
-const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteItem = (firebaseKey, orderFireKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/items/${firebaseKey}.json`)
     .then(() => {
-      getItems().then(resolve);
+      getItems(orderFireKey).then((itemArray) => resolve(itemArray));
     })
     .catch(reject);
 });
