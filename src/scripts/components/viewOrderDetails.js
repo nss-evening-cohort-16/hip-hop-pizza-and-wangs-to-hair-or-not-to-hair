@@ -1,8 +1,7 @@
 import clearDom from '../views/clearDom';
 
-const showItems = (firebaseKey, array) => {
+const showItems = (objectFireKey, array) => {
   clearDom();
-  console.warn(firebaseKey);
   array.forEach((obj) => {
     document.querySelector('#store').innerHTML += `
     <div class="card" style="width: 18rem;">
@@ -11,12 +10,12 @@ const showItems = (firebaseKey, array) => {
         <h4 class="card-item-price">${obj.item_price}</h4>
         <hr>
         <i class="fas fa-edit btn btn-info" id="update-item-btn--${obj.firebaseKey}"></i>
-        <i class="btn btn-danger fas fa-trash-alt" id="delete-item-btn--${obj.firebaseKey}"></i>
+        <i class="btn btn-danger fas fa-trash-alt" id="delete-item-btn--${obj.firebaseKey}--${objectFireKey}"></i>
         </div>
     </div>
   `;
   });
-  document.querySelector('#add-button').innerHTML = `<button class="btn btn-success btn-lg mb-4" id="add-item-btn--${firebaseKey}">Add Another Item</button>`;
+  document.querySelector('#add-button').innerHTML = `<button class="btn btn-success btn-lg mb-4" id="add-item-btn--${objectFireKey}">Add Another Item</button>`;
   document.querySelector('#add-button').innerHTML += '<button class="btn btn-success btn-lg mb-4" id="go-to-payment-btn">Go To Payment</button>';
 };
 
