@@ -3,7 +3,6 @@ import logoutButton from '../components/buttons/logoutButton';
 import domBuilder from '../components/domBuilder';
 import navBar from '../components/navBar';
 import navigationEvents from '../components/events/navigationEvents';
-import revenue from '../components/revenueView';
 import domEvents from '../components/events/domEvents';
 
 const startApp = (user) => {
@@ -13,8 +12,6 @@ const startApp = (user) => {
   logoutButton();
   mainMenuBuilder(user);
   navigationEvents(user);
-  revenue(user);
-  console.warn(user);
 };
 
 export default startApp;
