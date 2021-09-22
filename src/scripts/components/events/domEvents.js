@@ -56,8 +56,7 @@ const buttonEvents = () => {
       // eslint-disable-next-line no-alert
       if (window.confirm('Are you sure you want to delete this item?')) {
         const [, firebaseKey, orderFireKey] = e.target.id.split('--');
-
-        deleteItem(firebaseKey, orderFireKey).then((array) => showItems(orderFireKey, array));
+        deleteItem(firebaseKey, orderFireKey).then((itemArray) => showItems(orderFireKey, itemArray));
       }
     }
     // CLICK EVENT FOR EDITING AN ORDER
@@ -120,6 +119,7 @@ const formEvents = () => {
         item_price: document.querySelector('#itemPrice').value,
         order_Id: firebaseKey
       };
+      console.warn(itemObj.order_Id);
       createItem(itemObj).then((orderArray) => showItems(firebaseKey, orderArray));
     }
 
