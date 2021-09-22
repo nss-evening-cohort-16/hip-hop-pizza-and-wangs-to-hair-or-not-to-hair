@@ -8,7 +8,9 @@ import {
   updateOrder
 } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
-import { getItems, createItem, deleteItem } from '../../helpers/data/itemsData';
+import {
+  getItems, createItem, getSingleItem, updateItem, deleteItem
+} from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
 import revenue from '../revenueView';
@@ -22,7 +24,12 @@ const buttonEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
       addItemForm(firebaseKey);
     }
-    // LAUNCHES THE ITEMS(ORDER DETAILS) PAGE
+    // LAUNCHES THE ITEM FORM TO UPDATE
+    if (e.target.id.includes('edit-item-btn')) {
+      const [, firebaseKey, orderFireKey] = e.target.id.split('--');
+      getSingleItem(firebaseKey).then((itemObj) => addItemForm(orderFireKey, itemObj));
+    }
+    // SHOWS ITEMS CARDS
     if (e.target.id.includes('details-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       getItems(firebaseKey).then((itemArray) => showItems(firebaseKey, itemArray));
@@ -111,14 +118,27 @@ const formEvents = () => {
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
       e.preventDefault();
-      const [, firebaseKey] = e.target.id.split('--');
+      const [, orderId] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
         item_price: document.querySelector('#itemPrice').value,
-        order_Id: firebaseKey
+        order_Id: orderId
       };
-      console.warn(itemObj.order_Id);
-      createItem(itemObj).then((orderArray) => showItems(firebaseKey, orderArray));
+      createItem(itemObj).then((orderArray) => showItems(orderId, orderArray));
+    }
+
+    // UPDATE ITEM
+    if (e.target.id.includes('update-item')) {
+      e.preventDefault();
+      const [, firebaseKey, orderId] = e.target.id.split('--');
+      const itemObj = {
+        item_name: document.querySelector('#itemName').value,
+        item_price: document.querySelector('#itemPrice').value,
+        order_Id: orderId,
+        firebaseKey
+
+      };
+      updateItem(itemObj, orderId).then((itemArray) => showItems(orderId, itemArray));
     }
   });
 };

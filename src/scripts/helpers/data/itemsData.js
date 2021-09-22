@@ -24,16 +24,21 @@ const createItem = (itemObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
+const updateItem = (itemObj, orderFireKey) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/items/${itemObj.firebaseKey}.json`, itemObj)
+    .then(() => getItems(orderFireKey).then(resolve))
+    .catch(reject);
+});
+
 // GET SINGLE ITEM
 
 const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/orders/${firebaseKey}.json`)
+  axios.get(`${dbUrl}/items/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch(reject);
 });
 
 // DELETE ITEM
-
 const deleteItem = (firebaseKey, orderFireKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/items/${firebaseKey}.json`)
     .then(() => {
@@ -46,5 +51,6 @@ export {
   getItems,
   createItem,
   getSingleItem,
-  deleteItem
+  deleteItem,
+  updateItem,
 };
