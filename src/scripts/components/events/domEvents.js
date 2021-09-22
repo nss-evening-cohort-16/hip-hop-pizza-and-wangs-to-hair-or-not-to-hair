@@ -5,11 +5,12 @@ import {
   createOrders,
   deleteOrder,
   getOrders,
-  getSingleOrder
+  getSingleOrder,
+  updateOrder
 } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 import {
-  getItems, createItem, getSingleItem, updateItem
+  getItems, createItem, getSingleItem, updateItem, deleteItem
 } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 
@@ -18,17 +19,18 @@ const buttonEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     // LAUNCHES THE ADD NEW ITEM FORM
     if (e.target.id.includes('add-item-btn')) {
-      addItemForm();
+      const [, firebaseKey] = e.target.id.split('--');
+      addItemForm(firebaseKey);
     }
     // LAUNCHES THE ITEM FORM TO UPDATE
-    if (e.target.id.includes('update-item-btn')) {
-      const [, firebaseKey] = e.target.id.split('--');
-
-      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
+    if (e.target.id.includes('edit-item-btn')) {
+      const [, firebaseKey, orderFireKey] = e.target.id.split('--');
+      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj, orderFireKey));
     }
     // SHOWS ITEMS CARDS
     if (e.target.id.includes('details-order-btn')) {
-      getItems().then(showItems);
+      const [, firebaseKey] = e.target.id.split('--');
+      getItems(firebaseKey).then((itemArray) => showItems(firebaseKey, itemArray));
     }
     // LAUNCHES THE CLOSE ORDER FORM
     if (e.target.id.includes('go-to-payment-btn')) {
@@ -49,6 +51,30 @@ const buttonEvents = () => {
         deleteOrder(firebaseKey).then(showOrders);
       }
     }
+    // CLICK EVENT FOR DELETING AN ITEM
+    if (e.target.id.includes('delete-item-btn')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Are you sure you want to delete this item?')) {
+        const [, firebaseKey, orderFireKey] = e.target.id.split('--');
+
+        deleteItem(firebaseKey, orderFireKey).then((array) => showItems(orderFireKey, array));
+      }
+    }
+    // CLICK EVENT FOR EDITING AN ORDER
+    if (e.target.id.includes('update-order')) {
+      e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
+      const orderObj = {
+        customer_name: document.querySelector('#customer-name').value,
+        customer_phone: document.querySelector('#customer-phone').value,
+        customer_email: document.querySelector('#customer-email').value,
+        order_type: document.querySelector('input[name="order-type"]:checked').value,
+        firebaseKey
+      };
+
+      updateOrder(orderObj).then(showOrders);
+    }
+
     // CLICK EVENT FOR SHOWING ALL ORDERS
     if (e.target.id.includes('view-orders-button')) {
       getOrders().then(showOrders);
@@ -84,21 +110,27 @@ const formEvents = () => {
       };
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
+
     // CREATE ITEM
-    if (e.target.id.includes('submit-item')) {
+    if (e.target.id.includes('submit-item-button')) {
       e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value
+        item_price: document.querySelector('#itemPrice').value,
+        order_Id: firebaseKey
       };
-      createItem(itemObj).then((itemArray) => showItems(itemArray));
+      createItem(itemObj).then((orderArray) => showItems(firebaseKey, orderArray));
     }
+
     // UPDATE ITEM
     if (e.target.id.includes('update-item')) {
       e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value
+        item_price: document.querySelector('#itemPrice').value,
+        order_Id: firebaseKey
       };
       updateItem(itemObj).then((itemArray) => showItems(itemArray));
     }
