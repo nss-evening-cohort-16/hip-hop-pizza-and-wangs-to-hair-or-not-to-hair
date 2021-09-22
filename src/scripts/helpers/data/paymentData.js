@@ -23,27 +23,34 @@ const calcTipTotal = (array) => (array.reduce((a, b) => (a + b.tip_total), 0));
 //   });
 //   return tipTotal;
 
+// const tallyCounter = (array, condition) => {
+
+// };
+
 // FINDS THE EARLIEST ORDER DATE CLOSED ORDERS
 const firstDate = (array) => {
-  const dates = array.map((x) => x.date_opened);
-  // dates.sort((a, b) => (a > b));
-  const date = dates.shift();
-  console.warn('Parsed?', date);
-  return date;
+  const sorter = (a, b) => (new Date(a.date_opened).getTime() - new Date(b.date_opened).getTime());
+  const sortedArray = array.sort(sorter);
+  // CAN USE TO FIND THE NEWEST DATE
+  // const lastIndex = sortedArray[sortedArray.length - 1];
+  return sortedArray[0];
+  // const date = dates.shift();
 };
-  // const sortedDates = dates.sort((a, b) => (Date.parse(a) > Date.parse(b)));
-  // console.warn(sortedDates);
-  // return sortedDates;
 
 // FINDS THE OLDEST ORDER DATE CLOSED ORDERS
-// const oldestDate = (array) => (array.reduce((prev, cur) => (Date.parse(prev) < Date.parse(cur) ? prev : cur)));
+const oldestDate = (array) => {
+  const sorter = (a, b) => (new Date(a.date_closed).getTime() - new Date(b.date_closed).getTime());
+  const sortedArray = array.sort(sorter);
+  return sortedArray[sortedArray.length - 1];
+};
 
 const revenueCalculations = (array) => {
   const revenueData = {
     item_total: calcTotalRevenue(array),
     first_order_date: firstDate(array),
-    // last_order_date: oldestDate(array),
+    last_order_date: oldestDate(array),
     tip_total: calcTipTotal(array)
+    // total_call-ins: tallyCounter(array, )
   };
   console.warn(revenueData);
   return revenueData;
