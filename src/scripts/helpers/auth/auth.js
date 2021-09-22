@@ -1,8 +1,9 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import loginButton from '../../components/buttons/loginButton';
+// import loginButton from '../../components/buttons/loginButton';
 import firebaseConfig from '../../../api/apiKeys';
 import startApp from '../../views/startApp';
+import homeLoggedOut from '../../views/homeLoggedOut';
 
 const checkLoginStatus = () => {
   firebase.initializeApp(firebaseConfig);
@@ -12,7 +13,7 @@ const checkLoginStatus = () => {
       startApp(user);
     } else {
       // person is NOT logged in
-      loginButton();
+      homeLoggedOut();
     }
   });
 };
