@@ -20,7 +20,6 @@ const buttonEvents = () => {
     // LAUNCHES THE ADD NEW ITEM FORM
     if (e.target.id.includes('add-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(firebaseKey);
       addItemForm(firebaseKey);
     }
     // LAUNCHES THE ITEMS(ORDER DETAILS) PAGE
@@ -51,9 +50,8 @@ const buttonEvents = () => {
     if (e.target.id.includes('delete-item-btn')) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Are you sure you want to delete this item?')) {
-        const [, firebaseKey] = e.target.id.split('--');
-
-        deleteItem(firebaseKey).then(showItems);
+        const [, firebaseKey, orderFireKey] = e.target.id.split('--');
+        deleteItem(firebaseKey, orderFireKey).then((itemArray) => showItems(orderFireKey, itemArray));
       }
     }
     // CLICK EVENT FOR EDITING AN ORDER
@@ -119,6 +117,7 @@ const formEvents = () => {
         item_price: document.querySelector('#itemPrice').value,
         order_Id: firebaseKey
       };
+      console.warn(itemObj.order_Id);
       createItem(itemObj).then((orderArray) => showItems(firebaseKey, orderArray));
     }
   });
