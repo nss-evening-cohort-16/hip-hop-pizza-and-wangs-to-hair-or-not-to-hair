@@ -33,7 +33,7 @@ const firstDate = (array) => {
   const sortedArray = array.sort(sorter);
   // CAN USE TO FIND THE NEWEST DATE
   // const lastIndex = sortedArray[sortedArray.length - 1];
-  return sortedArray[0];
+  return sortedArray[0].date_opened;
   // const date = dates.shift();
 };
 
@@ -41,7 +41,7 @@ const firstDate = (array) => {
 const oldestDate = (array) => {
   const sorter = (a, b) => (new Date(a.date_closed).getTime() - new Date(b.date_closed).getTime());
   const sortedArray = array.sort(sorter);
-  return sortedArray[sortedArray.length - 1];
+  return sortedArray[sortedArray.length - 1].date_closed;
 };
 
 const revenueCalculations = (array) => {
@@ -52,7 +52,7 @@ const revenueCalculations = (array) => {
     tip_total: calcTipTotal(array)
     // total_call-ins: tallyCounter(array, )
   };
-  console.warn(revenueData);
+
   return revenueData;
   // NEED TO CONTINUE FUNCTIONS TO UPDATE AND TO CREATE KEYS TO PUSH INFO INTO SO IT CAN BE PASSED TO REVENUE PAGE
 };
