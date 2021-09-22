@@ -3,7 +3,6 @@ import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
 import {
   createOrders,
-  deleteOrder,
   getOrders,
   getSingleOrder,
   updateOrder
@@ -11,6 +10,7 @@ import {
 import showOrders from '../viewAllOrders';
 import { getItems, createItem, deleteItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
+import deleteAllOrderItems from '../../helpers/data/mergedData';
 
 // BUTTON EVENTS
 const buttonEvents = () => {
@@ -41,7 +41,7 @@ const buttonEvents = () => {
       if (window.confirm('Are you sure you want to delete this order?')) {
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteOrder(firebaseKey).then(showOrders);
+        deleteAllOrderItems(firebaseKey).then(showOrders);
       }
     }
     // CLICK EVENT FOR DELETING AN ITEM
