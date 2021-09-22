@@ -3,7 +3,6 @@ import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
 import {
   createOrders,
-  deleteOrder,
   getOrders,
   getSingleOrder,
   updateOrder
@@ -43,7 +42,7 @@ const buttonEvents = () => {
       if (window.confirm('Are you sure you want to delete this order?')) {
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteOrder(firebaseKey).then(showOrders);
+        deleteAllOrderItems(firebaseKey).then(showOrders);
       }
     }
     // CLICK EVENT FOR DELETING AN ITEM
