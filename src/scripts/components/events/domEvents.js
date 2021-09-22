@@ -12,6 +12,7 @@ import { getItems, createItem, deleteItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
 import revenue from '../revenueView';
+import deleteAllOrderItems from '../../helpers/data/mergedData';
 
 // BUTTON EVENTS
 const buttonEvents = () => {
