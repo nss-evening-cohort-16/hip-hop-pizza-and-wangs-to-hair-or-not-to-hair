@@ -10,6 +10,8 @@ import {
 import showOrders from '../viewAllOrders';
 import { getItems, createItem, deleteItem } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
+import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
+import revenue from '../revenueView';
 import deleteAllOrderItems from '../../helpers/data/mergedData';
 
 // BUTTON EVENTS
@@ -77,7 +79,9 @@ const buttonEvents = () => {
     }
     // CLICK EVENT FOR SHOWING REVENUE PAGE
     if (e.target.id.includes('view-revenue-button')) {
-      console.warn('revenue clicked');
+      getClosedOrders().then((tips) => revenue(revenueCalculations(tips)));
+      // calcTipTotal(getClosedOrders()).then(console.warn);
+      // console.warn(getClosedOrders());
     }
   });
 };
@@ -87,13 +91,14 @@ const buttonEvents = () => {
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     // CREATE ORDER
+
     if (e.target.id.includes('submit-order')) {
       e.preventDefault();
       const orderObj = {
         customer_name: document.querySelector('#customer-name').value,
         customer_phone: document.querySelector('#customer-phone').value,
         customer_email: document.querySelector('#customer-email').value,
-        timestamp: Date.now(),
+        date_opened: new Date(),
         item_total: 0,
         payment_type: '',
         tip_total: 0,
