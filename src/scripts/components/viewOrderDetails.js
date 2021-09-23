@@ -16,7 +16,7 @@ const showItems = (orderFireKey, array) => {
   `;
   });
   document.querySelector('#add-button').innerHTML = `<button class="btn btn-success btn-lg mb-4" id="add-item-btn--${orderFireKey}">Add Another Item</button>`;
-  document.querySelector('#add-button').innerHTML += '<button class="btn btn-success btn-lg mb-4" id="go-to-payment-btn">Go To Payment</button>';
+  document.querySelector('#add-button').innerHTML += `<button class="btn btn-success btn-lg mb-4" id="go-to-payment-btn--${orderFireKey}">Go To Payment</button>`;
 };
 
 export default showItems;

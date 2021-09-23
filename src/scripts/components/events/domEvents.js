@@ -2,6 +2,7 @@ import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
 import {
+  closeOrder,
   createOrders,
   getOrders,
   getSingleOrder,
@@ -36,8 +37,10 @@ const buttonEvents = () => {
     }
     // LAUNCHES THE CLOSE ORDER FORM
     if (e.target.id.includes('go-to-payment-btn')) {
-      closeOrderForm();
+      const [, firebaseKey] = e.target.id.split('--');
+      closeOrderForm(firebaseKey);
     }
+
     // LAUNCHES THE EDIT ORDER FORM
     if (e.target.id.includes('edit-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
@@ -60,20 +63,6 @@ const buttonEvents = () => {
         const [, firebaseKey, orderFireKey] = e.target.id.split('--');
         deleteItem(firebaseKey, orderFireKey).then((itemArray) => showItems(orderFireKey, itemArray));
       }
-    }
-    // CLICK EVENT FOR EDITING AN ORDER
-    if (e.target.id.includes('update-order')) {
-      e.preventDefault();
-      const [, firebaseKey] = e.target.id.split('--');
-      const orderObj = {
-        customer_name: document.querySelector('#customer-name').value,
-        customer_phone: document.querySelector('#customer-phone').value,
-        customer_email: document.querySelector('#customer-email').value,
-        order_type: document.querySelector('input[name="order-type"]:checked').value,
-        firebaseKey
-      };
-
-      updateOrder(orderObj).then(showOrders);
     }
 
     // CLICK EVENT FOR SHOWING ALL ORDERS
@@ -114,6 +103,20 @@ const formEvents = () => {
       };
       createOrders(orderObj).then((orderArray) => showOrders(orderArray));
     }
+    // CLICK EVENT FOR EDITING AN ORDER
+    if (e.target.id.includes('update-order')) {
+      e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
+      const orderObj = {
+        customer_name: document.querySelector('#customer-name').value,
+        customer_phone: document.querySelector('#customer-phone').value,
+        customer_email: document.querySelector('#customer-email').value,
+        order_type: document.querySelector('input[name="order-type"]:checked').value,
+        firebaseKey
+      };
+
+      updateOrder(orderObj).then(showOrders);
+    }
 
     // CREATE ITEM
     if (e.target.id.includes('submit-item-button')) {
@@ -139,6 +142,19 @@ const formEvents = () => {
 
       };
       updateItem(itemObj, orderId).then((itemArray) => showItems(orderId, itemArray));
+    }
+    // CLOSES ORDER
+    if (e.target.id.includes('close-order-button')) {
+      e.preventDefault();
+      console.warn(e);
+      const [, firebaseKey] = e.target.id.split('--');
+      const orderObj = {
+        order_closed: true,
+        payment_type: document.querySelector('#paymentType').value,
+        tip_total: document.querySelector('#tipAmount').value,
+        firebaseKey
+      };
+      closeOrder(orderObj).then(showOrders);
     }
   });
 };
