@@ -37,7 +37,8 @@ const buttonEvents = () => {
     }
     // LAUNCHES THE CLOSE ORDER FORM
     if (e.target.id.includes('go-to-payment-btn')) {
-      closeOrderForm();
+      const [, firebaseKey] = e.target.id.split('--');
+      closeOrderForm(firebaseKey);
     }
 
     // LAUNCHES THE EDIT ORDER FORM
@@ -145,6 +146,7 @@ const formEvents = () => {
     // CLOSES ORDER
     if (e.target.id.includes('close-order-button')) {
       e.preventDefault();
+      console.warn(e);
       const [, firebaseKey] = e.target.id.split('--');
       const orderObj = {
         order_closed: true,

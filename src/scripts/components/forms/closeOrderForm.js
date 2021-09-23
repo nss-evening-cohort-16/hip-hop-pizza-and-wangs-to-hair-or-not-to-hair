@@ -1,6 +1,6 @@
 import clearDom from '../../views/clearDom';
 
-const closeOrderForm = () => {
+const closeOrderForm = (firebaseKey) => {
   clearDom();
 
   document.querySelector('#form-container').innerHTML = `
@@ -20,7 +20,7 @@ const closeOrderForm = () => {
           <input type="number" class="form-control" id="tipAmount" placeholder="Price" required>
         </div>
         <div class="form-button">
-            <button id="close-order-button" class="btn btn-success">Close Order</button>
+            <button id="close-order-button--${firebaseKey}" class="btn btn-success">Close Order</button>
         </div>
       </form>`;
 };
