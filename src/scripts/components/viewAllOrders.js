@@ -9,7 +9,7 @@ const showOrders = (array) => {
     <div class="card-body">
         <h4 class="card-title">Name: ${order.customer_name}</h4>
         <hr>
-        <p class="card-text">Order Closed: ${order.order_closed}</p>
+        <h5 class="card-text bold">${order.order_closed ? '<span class="badge bg-danger">closed</span>' : '<span class="badge bg-success">open</span>'}</h5>
         <hr>
         <p class="card-text">Phone: ${order.customer_phone}</p>
         <hr>
