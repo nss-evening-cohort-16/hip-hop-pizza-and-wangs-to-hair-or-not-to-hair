@@ -18,23 +18,26 @@ const calcTipTotal = (array) => (array.reduce((a, b) => (a + b.tip_total), 0));
 // REDUCE FUNCTION ABOVE DOES WHAT CODE BELOW DOES
 //   let tipTotal = 0;
 //   array.forEach((item) => {
-//     console.warn(item.tip_total);
 //     tipTotal += item.tip_total;
 //   });
 //   return tipTotal;
 
-// const tallyCounter = (array, condition) => {
-
-// };
+const tallyCounter = (array, key, attribute) => {
+  let tally = 0;
+  array.forEach((item) => {
+    if (item[key] === attribute) {
+      tally += 1;
+    }
+    return tally;
+  });
+  return tally;
+};
 
 // FINDS THE EARLIEST ORDER DATE CLOSED ORDERS
 const firstDate = (array) => {
   const sorter = (a, b) => (new Date(a.date_opened).getTime() - new Date(b.date_opened).getTime());
   const sortedArray = array.sort(sorter);
-  // CAN USE TO FIND THE NEWEST DATE
-  // const lastIndex = sortedArray[sortedArray.length - 1];
   return sortedArray[0].date_opened;
-  // const date = dates.shift();
 };
 
 // FINDS THE OLDEST ORDER DATE CLOSED ORDERS
@@ -49,8 +52,14 @@ const revenueCalculations = (array) => {
     item_total: calcTotalRevenue(array),
     first_order_date: firstDate(array),
     last_order_date: oldestDate(array),
-    tip_total: calcTipTotal(array)
-    // total_call-ins: tallyCounter(array, )
+    tip_total: calcTipTotal(array),
+    total_call_ins: tallyCounter(array, 'order_type', 'Phone'),
+    total_walk_ins: tallyCounter(array, 'order_type', 'In-Person'),
+    cash_payment: tallyCounter(array, 'payment_type', 'Cash'),
+    check_payment: tallyCounter(array, 'payment_type', 'Check'),
+    debit_payment: tallyCounter(array, 'payment_type', 'Debit'),
+    credit_payment: tallyCounter(array, 'payment_type', 'Credit'),
+    mobile_payment: tallyCounter(array, 'payment_type', 'Mobile'),
   };
 
   return revenueData;

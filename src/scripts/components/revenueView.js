@@ -15,13 +15,15 @@ const revenue = (array) => {
     <hr>
     <p class="card-text">TOTAL TIPS: $${array.tip_total}</p>
     <hr>
-    <p class="card-text">TOTAL CALL IN ORDERS: </p>
-    <p class="card-text">TOTAL WALK IN ORDERS: </p>
+    <p class="card-text">TOTAL CALL IN ORDERS: ${array.total_call_ins}</p>
+    <p class="card-text">TOTAL WALK IN ORDERS: ${array.total_walk_ins}</p>
     <hr>
     <p class="card-text">PAYMENT TYPES: </p>
-    <p class="card-text">CASH: </p>
-    <p class="card-text">CREDIT: </p>
-    <p class="card-text">MOBILE: </p>
+    <p class="card-text">CASH: ${array.cash_payment}</p>
+    <p class="card-text">CHECK: ${array.check_payment}</p>
+    <p class="card-text">DEBIT: ${array.debit_payment}</p>
+    <p class="card-text">CREDIT: ${array.credit_payment}</p>
+    <p class="card-text">MOBILE: ${array.mobile_payment}</p>
   </div>
 </div>`;
 };
