@@ -1,6 +1,8 @@
 import { getOrders } from '../../helpers/data/ordersData';
+import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
 import addOrderForm from '../forms/addOrderForm';
 import mainMenuBuilder from '../mainMenu';
+import revenue from '../revenueView';
 import showOrders from '../viewAllOrders';
 
 const navigationEvents = (user) => {
@@ -17,6 +19,11 @@ const navigationEvents = (user) => {
     // CREATE ORDERS BUTTON
     if (e.target.id.includes('create-new')) {
       addOrderForm();
+    }
+
+    // VIEW REVENUE BUTTON
+    if (e.target.id.includes('view-revenue')) {
+      getClosedOrders().then((tips) => revenue(revenueCalculations(tips)));
     }
   });
 };
