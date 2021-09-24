@@ -11,7 +11,7 @@ const getClosedOrders = () => new Promise((resolve, reject) => {
 });
 
 // CALCULATES TOTAL REVENUE FROM CLOSED ORDERS
-const calcTotalRevenue = (array) => (array.reduce((a, b) => (a + b.item_total), 0));
+const calcRevenue = (array, param) => (array.reduce((a, b) => (a + b[param]), 0));
 
 // CALCULATES TOTAL TIP EARNINGS FROM CLOSED ORDERS
 const calcTipTotal = (array) => (array.reduce((a, b) => (a + b.tip_total), 0));
@@ -49,7 +49,7 @@ const oldestDate = (array) => {
 
 const revenueCalculations = (array) => {
   const revenueData = {
-    item_total: calcTotalRevenue(array),
+    item_total: calcRevenue(array, 'item_total'),
     first_order_date: firstDate(array),
     last_order_date: oldestDate(array),
     tip_total: calcTipTotal(array),
@@ -67,5 +67,5 @@ const revenueCalculations = (array) => {
 };
 
 export {
-  getClosedOrders, calcTipTotal, calcTotalRevenue, revenueCalculations
+  getClosedOrders, calcTipTotal, calcRevenue, revenueCalculations
 };
