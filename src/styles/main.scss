@@ -5,9 +5,39 @@ body {
   background-color: #0e0e0d;
   color: brown;
   text-align: center;
-  margin-top: 100px;
 }
 
 .btn-css {
   margin-left: 20px;
+}
+ 
+form {
+  margin: auto;
+  width: 40rem;
+  padding-top: 30px;
+}
+
+.btn-success {
+  margin-top: 20px;
+}
+
+.greeting {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.main-menu-btn {
+  margin: 10px;
+  width: 250px;
+}
+
+.rev-card {
+  background-color: #0e0e0d;
+  color: whitesmoke;
+}
+.rev-orders {
+  margin-top: 5rem;
+}
+.rev-payment {
+  margin-top: 5rem;
 }
