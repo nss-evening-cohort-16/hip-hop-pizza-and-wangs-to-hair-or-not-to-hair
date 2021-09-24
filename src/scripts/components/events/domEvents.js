@@ -94,6 +94,7 @@ const formEvents = () => {
         customer_name: document.querySelector('#customer-name').value,
         customer_phone: document.querySelector('#customer-phone').value,
         customer_email: document.querySelector('#customer-email').value,
+        date_closed: '',
         date_opened: new Date(),
         item_total: 0,
         payment_type: '',
@@ -152,6 +153,7 @@ const formEvents = () => {
         order_closed: true,
         payment_type: document.querySelector('#paymentType').value,
         tip_total: document.querySelector('#tipAmount').value,
+        date_closed: new Date(),
         firebaseKey
       };
       closeOrder(orderObj).then(showOrders);
