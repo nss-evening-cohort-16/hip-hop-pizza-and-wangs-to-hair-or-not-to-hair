@@ -5,6 +5,7 @@ const addItemForm = (orderId, obj = {}) => {
 
   document.querySelector('#form-container').innerHTML = `
       <form id="add-item-form" class="mb-4">
+      <h3>Add an Item</h3>
         <div class="form-group">
           <label for="itemName">Item Name</label>
           <input type="text" class="form-control" id="itemName" placeholder="Name" value="${obj.item_name || ''}" required>

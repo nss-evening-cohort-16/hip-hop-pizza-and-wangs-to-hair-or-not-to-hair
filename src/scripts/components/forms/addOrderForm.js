@@ -3,6 +3,7 @@ import clearDom from '../../views/clearDom';
 const addOrderForm = (obj = {}) => {
   clearDom();
   document.querySelector('#form-container').innerHTML = `<form id="add-order-form" class="mb-4 submit-vocab-form">
+    <h3>Create an Order</h3>
     <div class="form-group">
       <label for="customer-name">Name</label>
       <input type="text" class="form-control" id="customer-name" placeholder="Enter Customer's Name" value="${obj.customer_name || ''}" required>
