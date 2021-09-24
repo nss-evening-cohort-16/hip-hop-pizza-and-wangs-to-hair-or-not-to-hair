@@ -11,7 +11,7 @@ const addItemForm = (orderId, obj = {}) => {
         </div>
         <div class="form-group">
           <label for="itemPrice">Item Price</label>
-          <input type="text" class="form-control" id="itemPrice" placeholder="Price" value="${obj.item_price || ''}" required>
+          <input type="number" class="form-control" id="itemPrice" placeholder="Price" value="${obj.item_price || ''}" required>
         </div>
         <div class="form-button">
             <button id="${obj.firebaseKey ? `update-item--${obj.firebaseKey}--${orderId}` : `submit-item-button--${orderId}`}" class="btn btn-success">Submit Item</button>
