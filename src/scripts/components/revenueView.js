@@ -8,8 +8,8 @@ const revenue = (array) => {
   document.querySelector('#store').innerHTML = `
     <div class="card rev-card">
   <div class="card-body">
-    <h2 class="card-title rev-title">REVENUE</h2>
-    <h4 class="card-title rev-total">TOTAL REVENUE: $${array.item_total} </h4>
+    <h2 class="card-title rev-title m-4">REVENUE</h2>
+    <h1 class="card-title rev-total display-2">TOTAL REVENUE: $${array.item_total} </h1>
     <p class="card-text rev-range">DATE RANGE: ${`${firstOrderDate} - ${lastOrderDate}`} </p>
     <p class="card-text rev-tips">TOTAL TIPS: $${array.tip_total}</p>
     <div class="rev-orders">
@@ -17,7 +17,7 @@ const revenue = (array) => {
       <p class="card-text">TOTAL WALK IN ORDERS: ${array.total_walk_ins}</p>
     </div>
     <div class="rev-payment">
-      <p class="card-text">PAYMENT TYPES: </p>
+      <h3 class="card-title">PAYMENT TYPES: </h3>
       <p class="card-text">CASH: ${array.cash_payment}</p>
       <p class="card-text">CHECK: ${array.check_payment}</p>
       <p class="card-text">DEBIT: ${array.debit_payment}</p>
