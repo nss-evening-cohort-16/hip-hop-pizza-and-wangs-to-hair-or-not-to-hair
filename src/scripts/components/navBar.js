@@ -25,10 +25,6 @@ const navBar = () => {
             <a id="view-revenue" class="nav-link" href="#">View Revenue</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search Orders" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
         <div id='logout-button'></div>
       </div>
     </div>
