@@ -24,6 +24,8 @@ const createItem = (itemObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
+// UPDATE ITEM
+
 const updateItem = (itemObj, orderFireKey) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/items/${itemObj.firebaseKey}.json`, itemObj)
     .then(() => getItems(orderFireKey).then(resolve))

@@ -21,6 +21,9 @@ const navBar = () => {
           </li>
             <a id="create-new" class="nav-link" href="#">Create Order</a>
           </li>
+          </li>
+            <a id="view-revenue" class="nav-link" href="#">View Revenue</a>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search Orders" aria-label="Search">
