@@ -152,7 +152,7 @@ const formEvents = () => {
       const orderObj = {
         order_closed: true,
         payment_type: document.querySelector('#paymentType').value,
-        tip_total: document.querySelector('#tipAmount').value,
+        tip_total: Number(document.querySelector('#tipAmount').value),
         date_closed: new Date(),
         firebaseKey
       };
