@@ -3,16 +3,21 @@ import clearDom from '../views/clearDom';
 
 const showItems = (orderFireKey, array) => {
   clearDom();
+  document.querySelector('#store').innerHTML = `
+  <div class="items-container" id="item-card-container"></div>
+  `;
   array.forEach((obj) => {
-    document.querySelector('#store').innerHTML += `
+    document.querySelector('#item-card-container').innerHTML += `
+     
     <div class="card" style="width: 18rem;">
-      <div class="card-body item-style">
-        <h5 class="card-item-name">${obj.item_name}</h5>
-        <h4 class="card-item-price">$${obj.item_price}</h4>
-        <hr>
-        <i class="fas fa-edit btn btn-info" id="edit-item-btn--${obj.firebaseKey}--${orderFireKey}"></i>
-        <i class="btn btn-danger fas fa-trash-alt" id="delete-item-btn--${obj.firebaseKey}--${orderFireKey}"></i>
-        </div>
+    <div class="card-body item-style">
+    <h5 class="card-item-name">${obj.item_name}</h5>
+    <h4 class="card-item-price">$${obj.item_price}</h4>
+    <hr>
+    <i class="fas fa-edit btn btn-info" id="edit-item-btn--${obj.firebaseKey}--${orderFireKey}"></i>
+    <i class="btn btn-danger fas fa-trash-alt" id="delete-item-btn--${obj.firebaseKey}--${orderFireKey}"></i>
+    </div>
+    </div>
     </div>
   `;
   });
