@@ -125,7 +125,7 @@ const formEvents = () => {
       const [, orderId] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value,
+        item_price: Number(document.querySelector('#itemPrice').value),
         order_Id: orderId
       };
       createItem(itemObj).then((orderArray) => showItems(orderId, orderArray));
@@ -137,7 +137,7 @@ const formEvents = () => {
       const [, firebaseKey, orderId] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value,
+        item_price: Number(document.querySelector('#itemPrice').value),
         order_Id: orderId,
         firebaseKey
 
@@ -152,7 +152,7 @@ const formEvents = () => {
       const orderObj = {
         order_closed: true,
         payment_type: document.querySelector('#paymentType').value,
-        tip_total: document.querySelector('#tipAmount').value,
+        tip_total: Number(document.querySelector('#tipAmount').value),
         date_closed: new Date(),
         firebaseKey
       };

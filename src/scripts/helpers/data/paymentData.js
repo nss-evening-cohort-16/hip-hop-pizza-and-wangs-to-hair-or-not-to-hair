@@ -1,5 +1,6 @@
 import axios from 'axios';
 import firebaseConfig from '../../../api/apiKeys';
+import { getItems } from './itemsData';
 
 const dbUrl = firebaseConfig.databaseURL;
 
@@ -48,8 +49,14 @@ const oldestDate = (array) => {
 };
 
 const revenueCalculations = (array) => {
+  const pullItemTotal = async (itemsArray) => {
+    const pullItems = await getItems(itemsArray.firebaseKey);
+    console.warn(pullItems);
+    return pullItems;
+  };
+
   const revenueData = {
-    item_total: calcRevenue(array, 'item_total'),
+    item_total: calcRevenue(pullItemTotal(array), 'item_price'),
     first_order_date: firstDate(array),
     last_order_date: oldestDate(array),
     tip_total: calcTipTotal(array),

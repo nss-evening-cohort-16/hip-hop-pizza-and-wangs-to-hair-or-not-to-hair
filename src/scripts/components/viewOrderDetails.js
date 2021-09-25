@@ -1,9 +1,12 @@
 import { getSingleOrder } from '../helpers/data/ordersData';
+import { calcRevenue } from '../helpers/data/paymentData';
 import clearDom from '../views/clearDom';
 
 const showItems = (orderFireKey, array) => {
+  const totalItemPrice = calcRevenue(array, 'item_price');
   clearDom();
   document.querySelector('#store').innerHTML = `
+  <h2>Order Total: ${Number(totalItemPrice)}</h2>
   <div class="items-container" id="item-card-container"></div>
   `;
   array.forEach((obj) => {
