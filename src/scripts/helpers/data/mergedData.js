@@ -1,5 +1,6 @@
 import { deleteItem, getItems } from './itemsData';
 import { deleteOrder } from './ordersData';
+import { calcRevenue } from './paymentData';
 
 const deleteAllOrderItems = (orderId) => new Promise((resolve, reject) => {
   getItems(orderId).then((orderItemsArray) => {
@@ -8,4 +9,10 @@ const deleteAllOrderItems = (orderId) => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
-export default deleteAllOrderItems;
+const getItemTotals = async (array, firebaseKey) => {
+  const itemTotals = await getItems(firebaseKey);
+  const calcItemTotals = await calcRevenue(array, 'item.price');
+  return { ...itemTotals, calcItemTotals };
+};
+
+export { deleteAllOrderItems, getItemTotals };

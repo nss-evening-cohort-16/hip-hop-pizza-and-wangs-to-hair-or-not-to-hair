@@ -2,20 +2,16 @@ import addItemForm from '../forms/addItemForm';
 import closeOrderForm from '../forms/closeOrderForm';
 import addOrderForm from '../forms/addOrderForm';
 import {
-  closeOrder,
-  createOrders,
-  getOrders,
-  getSingleOrder,
-  updateOrder
+  closeOrder, createOrders, getOrders, getSingleOrder, updateOrder
 } from '../../helpers/data/ordersData';
 import showOrders from '../viewAllOrders';
 import {
-  getItems, createItem, getSingleItem, updateItem, deleteItem
+  createItem, getSingleItem, updateItem, deleteItem
 } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
 import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
 import revenue from '../revenueView';
-import deleteAllOrderItems from '../../helpers/data/mergedData';
+import { deleteAllOrderItems, getItemTotals } from '../../helpers/data/mergedData';
 
 // BUTTON EVENTS
 const buttonEvents = () => {
@@ -33,7 +29,9 @@ const buttonEvents = () => {
     // SHOWS ITEMS CARDS
     if (e.target.id.includes('details-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      getItems(firebaseKey).then((itemArray) => showItems(firebaseKey, itemArray));
+      // getItems(firebaseKey).then((itemArray) => showItems(firebaseKey, itemArray));
+      getItemTotals(firebaseKey).then((itemArray) => revenue(revenueCalculations(itemArray)));
+      console.warn(getItemTotals());
     }
     // LAUNCHES THE CLOSE ORDER FORM
     if (e.target.id.includes('go-to-payment-btn')) {
@@ -75,9 +73,8 @@ const buttonEvents = () => {
     }
     // CLICK EVENT FOR SHOWING REVENUE PAGE
     if (e.target.id.includes('view-revenue-button')) {
-      getClosedOrders().then((tips) => revenue(revenueCalculations(tips)));
+      getClosedOrders().then((closedOrderArray) => revenue(revenueCalculations(closedOrderArray)));
       // calcTipTotal(getClosedOrders()).then(console.warn);
-      // console.warn(getClosedOrders());
     }
   });
 };
