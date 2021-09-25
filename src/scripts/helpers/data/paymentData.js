@@ -1,15 +1,5 @@
-import axios from 'axios';
-import firebaseConfig from '../../../api/apiKeys';
-import { getItems } from './itemsData';
-
-const dbUrl = firebaseConfig.databaseURL;
-
-// PROMISE PULLING CLOSED ORDERS
-const getClosedOrders = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/orders.json?orderBy="order_closed"&equalTo=true`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch(reject);
-});
+/* eslint-disable import/no-cycle */
+import orderItemsTotal from './orderItemsTotal';
 
 // CALCULATES TOTAL REVENUE FROM CLOSED ORDERS
 const calcRevenue = (array, param) => (array.reduce((a, b) => (a + b[param]), 0));
@@ -49,30 +39,26 @@ const oldestDate = (array) => {
 };
 
 const revenueCalculations = (array) => {
-  const pullItemTotal = async (itemsArray) => {
-    const pullItems = await getItems(itemsArray.firebaseKey);
-    console.warn(pullItems);
-    return pullItems;
-  };
-
-  const revenueData = {
-    item_total: calcRevenue(pullItemTotal(array), 'item_price'),
-    first_order_date: firstDate(array),
-    last_order_date: oldestDate(array),
-    tip_total: calcTipTotal(array),
-    total_call_ins: tallyCounter(array, 'order_type', 'Phone'),
-    total_walk_ins: tallyCounter(array, 'order_type', 'In-Person'),
-    cash_payment: tallyCounter(array, 'payment_type', 'Cash'),
-    check_payment: tallyCounter(array, 'payment_type', 'Check'),
-    debit_payment: tallyCounter(array, 'payment_type', 'Debit'),
-    credit_payment: tallyCounter(array, 'payment_type', 'Credit'),
-    mobile_payment: tallyCounter(array, 'payment_type', 'Mobile'),
-  };
-
-  return revenueData;
+  console.warn('');
+  return orderItemsTotal().then((itemArray) => {
+    const revenueData = {
+      item_total: calcRevenue(itemArray, 'item_price'),
+      first_order_date: firstDate(array),
+      last_order_date: oldestDate(array),
+      tip_total: calcTipTotal(array),
+      total_call_ins: tallyCounter(array, 'order_type', 'Phone'),
+      total_walk_ins: tallyCounter(array, 'order_type', 'In-Person'),
+      cash_payment: tallyCounter(array, 'payment_type', 'Cash'),
+      check_payment: tallyCounter(array, 'payment_type', 'Check'),
+      debit_payment: tallyCounter(array, 'payment_type', 'Debit'),
+      credit_payment: tallyCounter(array, 'payment_type', 'Credit'),
+      mobile_payment: tallyCounter(array, 'payment_type', 'Mobile'),
+    };
+    return revenueData;
+  });
   // NEED TO CONTINUE FUNCTIONS TO UPDATE AND TO CREATE KEYS TO PUSH INFO INTO SO IT CAN BE PASSED TO REVENUE PAGE
 };
 
 export {
-  getClosedOrders, calcTipTotal, calcRevenue, revenueCalculations
+  calcTipTotal, calcRevenue, revenueCalculations
 };
