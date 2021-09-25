@@ -8,4 +8,10 @@ const deleteAllOrderItems = (orderId) => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
+// const updateOrderItemTotals = async (array, firebaseKey) => {
+//   const itemTotals = await createItem(itemObj);
+//   const calcItemTotals = await updateOrder();
+//   return { ...itemTotals, calcItemTotals };
+// };
+
 export default deleteAllOrderItems;
