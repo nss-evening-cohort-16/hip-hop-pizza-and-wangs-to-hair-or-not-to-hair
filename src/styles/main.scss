@@ -7,14 +7,14 @@ body {
   text-align: center;
 }
 
-#store {
-  width: 90%;
-  display: flex;
-  flex-flow: row wrap;
-  text-align: center;
-  margin: auto;
-  justify-content: center;
-}
+// #store {
+//   width: 90%;
+//   display: flex;
+//   flex-flow: row wrap;
+//   text-align: center;
+//   margin: auto;
+//   justify-content: center;
+// }
 
 .btn-css {
   margin-left: 20px;
@@ -26,7 +26,7 @@ form {
   padding-top: 30px;
 }
 
-.btn-success {
+.btn-success .btn-info{
   margin-top: 20px;
 }
 
@@ -66,6 +66,25 @@ form {
 }
 .rev-payment {
   margin-top: 5rem;
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.items-button-style {
+  display: flex;
+  justify-content: center;
+}
+
+.item-card {
+  width: 55%;
+  color: whitesmoke;
+  background-color: #0e0e0d;
+  border: solid 2px brown;
+  margin-bottom: 10px;
 }
 
 .navbar {
