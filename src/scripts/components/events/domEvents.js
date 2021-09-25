@@ -93,7 +93,7 @@ const formEvents = () => {
       e.preventDefault();
       const orderObj = {
         customer_name: document.querySelector('#customer-name').value,
-        customer_phone: document.querySelector('#customer-phone').value,
+        customer_phone: Number(document.querySelector('#customer-phone').value),
         customer_email: document.querySelector('#customer-email').value,
         date_closed: '',
         date_opened: new Date(),
@@ -111,7 +111,7 @@ const formEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
       const orderObj = {
         customer_name: document.querySelector('#customer-name').value,
-        customer_phone: document.querySelector('#customer-phone').value,
+        customer_phone: Number(document.querySelector('#customer-phone').value),
         customer_email: document.querySelector('#customer-email').value,
         order_type: document.querySelector('input[name="order-type"]:checked').value,
         firebaseKey

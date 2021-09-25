@@ -7,6 +7,15 @@ body {
   text-align: center;
 }
 
+// #store {
+//   width: 90%;
+//   display: flex;
+//   flex-flow: row wrap;
+//   text-align: center;
+//   margin: auto;
+//   justify-content: center;
+// }
+
 .btn-css {
   margin-left: 20px;
 }
@@ -24,12 +33,29 @@ form {
 .greeting {
   margin-top: 20px;
   margin-bottom: 100px;
+  flex-shrink: 0 0 auto;
 }
 
 .main-menu-btn {
   margin: 10px;
   width: 250px;
 }
+
+.order-card {
+    width: 350px;
+    margin: 5px;
+    background-color: #0e0e0d;
+    color: whitesmoke;
+    border: solid 2px brown;
+
+    .btn {
+      width: 80px;
+    }
+
+    .btn-success, .btn-info{
+      margin-top: 0px;
+    }
+  }
 
 .rev-card {
   background-color: #0e0e0d;
@@ -53,9 +79,15 @@ form {
   justify-content: center;
 }
 
-
 .item-card {
-  width: 55rem;
+  width: 55%;
+  color: whitesmoke;
   background-color: #0e0e0d;
-  border: brown;
+  border: solid 2px brown;
+  margin-bottom: 10px;
+}
+
+.navbar {
+  padding-bottom: 0;
+  padding-top: 0;
 }
