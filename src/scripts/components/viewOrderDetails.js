@@ -12,7 +12,7 @@ const showItems = (orderFireKey, array) => {
   array.forEach((obj) => {
     document.querySelector('#item-card-container').innerHTML += `
      
-    <div class="card" style="width: 18rem;">
+    <div class="card item-card">
     <div class="card-body item-style">
     <h5 class="card-item-name">${obj.item_name}</h5>
     <h4 class="card-item-price">$${obj.item_price}</h4>
@@ -24,9 +24,13 @@ const showItems = (orderFireKey, array) => {
     </div>
   `;
   });
+
+  document.querySelector('#add-button').innerHTML = `
+  <div class="items-button-style" id="order-details-btns"></div>
+  `;
   getSingleOrder(orderFireKey).then((orderObj) => {
-    document.querySelector('#add-button').innerHTML = `${orderObj.order_closed ? '' : `<button class="btn btn-info btn-lg mb-4" id="add-item-btn--${orderObj.firebaseKey}">Add Another Item</button>`}`;
-    document.querySelector('#add-button').innerHTML += `${orderObj.order_closed ? '' : `<button class="btn btn-success btn-lg mb-4" id="go-to-payment-btn--${orderObj.firebaseKey}">Go To Payment</button>`}`;
+    document.querySelector('#order-details-btns').innerHTML = `${orderObj.order_closed ? '' : `<button class="btn btn-info btn-lg mb-4" id="add-item-btn--${orderObj.firebaseKey}">Add Another Item</button>`}`;
+    document.querySelector('#order-details-btns').innerHTML += `${orderObj.order_closed ? '' : `<button class="btn btn-success btn-lg mb-4" id="go-to-payment-btn--${orderObj.firebaseKey}">Go To Payment</button>`}`;
   });
 };
 
