@@ -1,5 +1,6 @@
 import { getOrders } from '../../helpers/data/ordersData';
-import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
+import { revenueCalculations } from '../../helpers/data/paymentData';
+import getClosedOrders from '../../helpers/data/getClosedOrders';
 import addOrderForm from '../forms/addOrderForm';
 import mainMenuBuilder from '../mainMenu';
 import revenue from '../revenueView';
@@ -23,7 +24,7 @@ const navigationEvents = (user) => {
 
     // VIEW REVENUE BUTTON
     if (e.target.id.includes('view-revenue')) {
-      getClosedOrders().then((tips) => revenue(revenueCalculations(tips)));
+      getClosedOrders().then((closedOrdersArray) => revenueCalculations(closedOrdersArray).then(revenue));
     }
   });
 };

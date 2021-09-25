@@ -13,7 +13,8 @@ import {
   getItems, createItem, getSingleItem, updateItem, deleteItem
 } from '../../helpers/data/itemsData';
 import showItems from '../viewOrderDetails';
-import { getClosedOrders, revenueCalculations } from '../../helpers/data/paymentData';
+import { revenueCalculations } from '../../helpers/data/paymentData';
+import getClosedOrders from '../../helpers/data/getClosedOrders';
 import revenue from '../revenueView';
 import deleteAllOrderItems from '../../helpers/data/mergedData';
 
@@ -75,7 +76,7 @@ const buttonEvents = () => {
     }
     // CLICK EVENT FOR SHOWING REVENUE PAGE
     if (e.target.id.includes('view-revenue-button')) {
-      getClosedOrders().then((tips) => revenue(revenueCalculations(tips)));
+      getClosedOrders().then((closedOrdersArray) => revenueCalculations(closedOrdersArray).then(revenue));
       // calcTipTotal(getClosedOrders()).then(console.warn);
       // console.warn(getClosedOrders());
     }
