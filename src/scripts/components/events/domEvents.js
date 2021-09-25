@@ -92,7 +92,7 @@ const formEvents = () => {
       e.preventDefault();
       const orderObj = {
         customer_name: document.querySelector('#customer-name').value,
-        customer_phone: document.querySelector('#customer-phone').value,
+        customer_phone: Number(document.querySelector('#customer-phone').value),
         customer_email: document.querySelector('#customer-email').value,
         date_closed: '',
         date_opened: new Date(),
@@ -110,7 +110,7 @@ const formEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
       const orderObj = {
         customer_name: document.querySelector('#customer-name').value,
-        customer_phone: document.querySelector('#customer-phone').value,
+        customer_phone: Number(document.querySelector('#customer-phone').value),
         customer_email: document.querySelector('#customer-email').value,
         order_type: document.querySelector('input[name="order-type"]:checked').value,
         firebaseKey
@@ -125,7 +125,7 @@ const formEvents = () => {
       const [, orderId] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value,
+        item_price: Number(document.querySelector('#itemPrice').value),
         order_Id: orderId
       };
       createItem(itemObj).then((orderArray) => showItems(orderId, orderArray));
@@ -137,7 +137,7 @@ const formEvents = () => {
       const [, firebaseKey, orderId] = e.target.id.split('--');
       const itemObj = {
         item_name: document.querySelector('#itemName').value,
-        item_price: document.querySelector('#itemPrice').value,
+        item_price: Number(document.querySelector('#itemPrice').value),
         order_Id: orderId,
         firebaseKey
 
