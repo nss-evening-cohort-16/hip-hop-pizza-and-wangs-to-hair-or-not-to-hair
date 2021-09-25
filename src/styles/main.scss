@@ -44,9 +44,16 @@ form {
 .order-card {
     width: 350px;
     margin: 5px;
+    background-color: #0e0e0d;
+    color: whitesmoke;
+    border: solid 2px brown;
 
     .btn {
       width: 75px;
+    }
+
+    .btn-success {
+      margin-top: 0px;
     }
   }
 
@@ -59,4 +66,9 @@ form {
 }
 .rev-payment {
   margin-top: 5rem;
+}
+
+.navbar {
+  padding-bottom: 0;
+  padding-top: 0;
 }

@@ -18,7 +18,7 @@ const showOrders = (array) => {
         <p class="card-text">Order Type: ${order.order_type}</p>
         <hr>
         <div class="order-buttons">
-          <button class="btn btn-outline-secondary" id="details-order-btn--${order.firebaseKey}">Details</button>
+          <button class="btn btn-success" id="details-order-btn--${order.firebaseKey}">Details</button>
           <button class="btn btn-info" id="edit-order-btn--${order.firebaseKey}">Edit</button>
           <button class="btn btn-danger" id="delete-order-btn--${order.firebaseKey}">Delete</button>
         </div>
